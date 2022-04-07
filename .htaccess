@@ -1,0 +1,2 @@
+RewriteEngine on
+#RewriteRule ^(\w+)/(\w+)/?$ clientes.php?id=$2

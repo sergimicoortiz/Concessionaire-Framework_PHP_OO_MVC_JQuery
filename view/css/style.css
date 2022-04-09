@@ -13,7 +13,7 @@ body {
 	font: 11px/22px Arial, Helvetica, sans-serif;
 	color: #000;
 	min-width: 998px;
-	background: url(../images/body-bg.jpg) center 0 repeat #1c1c1c;
+	background: url(../img/body-bg.jpg) center 0 repeat #1c1c1c;
 	height: 100%;
 }
 
@@ -31,7 +31,7 @@ body {
 }
 
 .bg {
-	background: url(../images/bg.jpg) center 0 repeat-y;
+	background: url(../img/bg.jpg) center 0 repeat-y;
 	width: 100%;
 	min-height: 100%;
 }
@@ -149,7 +149,7 @@ ul.list-1 li {
 	line-height: 22px;
 	color: #fff;
 	text-transform: uppercase;
-	background: url(../images/marker-1.gif) 0 8px no-repeat;
+	background: url(../img/marker-1.gif) 0 8px no-repeat;
 }
 
 ul.list-1 li a {
@@ -167,7 +167,7 @@ ul.list-2 li {
 	line-height: 22px;
 	color: #9f9fa6;
 	text-transform: uppercase;
-	background: url(../images/marker-1.gif) 0 8px no-repeat;
+	background: url(../img/marker-1.gif) 0 8px no-repeat;
 }
 
 ul.list-2 li a {
@@ -330,7 +330,7 @@ nav {
 	/* z-index: 1111; */
 	z-index: 1;
 	position: relative;
-	background: url(../images/header.jpg) 0 bottom repeat-x;
+	background: url(../img/header.jpg) 0 bottom repeat-x;
 }
 
 ul.menu {
@@ -344,7 +344,7 @@ ul.menu li {
 	display: block;
 	height: 60px;
 	text-align: center;
-	background: url(../images/li.jpg) right 0 no-repeat;
+	background: url(../img/li.jpg) right 0 no-repeat;
 }
 
 ul.menu li:first-child {
@@ -352,7 +352,7 @@ ul.menu li:first-child {
 }
 
 ul.menu li a.home {
-	background: url(../images/home.jpg) 0 0 no-repeat;
+	background: url(../img/home.jpg) 0 0 no-repeat;
 	width: 61px;
 	height: 60px;
 	display: block;
@@ -456,12 +456,12 @@ ul.menu li a:hover, ul.menu li.current a {
 	left: 29px;
 	width: 13px;
 	height: 14px;
-	background: url(../images/comments-corner.png) 0 0 no-repeat;
+	background: url(../img/comments-corner.png) 0 0 no-repeat;
 }
 
 .box-2>div>a {
 	display: inline-block;
-	background: url(../images/icon-1.png) 0 0 no-repeat;
+	background: url(../img/icon-1.png) 0 0 no-repeat;
 	color: #9f9fa6;
 	font-weight: bold;
 	text-transform: uppercase;
@@ -544,7 +544,7 @@ ul.menu li a:hover, ul.menu li.current a {
 	position: absolute;
 	bottom: 9px;
 	left: -40px;
-	background: url(../images/shadow.png) 0 0 no-repeat;
+	background: url(../img/shadow.png) 0 0 no-repeat;
 	width: 270px;
 	height: 21px;
 }
@@ -741,7 +741,7 @@ ul.menu select {
 	display: block;
 	height: 60px;
 	text-align: center;
-	background: url(../images/li.jpg) right 0 no-repeat;
+	background: url(../img/li.jpg) right 0 no-repeat;
 }
 
 /**********BOX FUELS*****************/
@@ -878,7 +878,7 @@ ul.menu input {
 	display: block;
 	height: 60px;
 	text-align: center;
-	background: url(../images/li.jpg) right 0 no-repeat;
+	background: url(../img/li.jpg) right 0 no-repeat;
 
 }
 

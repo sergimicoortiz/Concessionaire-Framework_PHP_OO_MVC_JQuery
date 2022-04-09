@@ -1,0 +1,1 @@
+<script src="<?php echo SITE_PATH ?>module/contact/view/js/ctrl_contact.js"></script>

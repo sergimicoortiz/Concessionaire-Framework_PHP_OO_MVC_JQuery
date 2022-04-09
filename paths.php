@@ -1,6 +1,6 @@
 <?php
 //PROJECT
-define('PROJECT', 'Concessionaire-Framework_PHP_OO_MVC_JQuery');
+define('PROJECT', '/Concessionaire-Framework_PHP_OO_MVC_JQuery/');
 
 //SITE_ROOT
 define('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'] . PROJECT);
@@ -36,4 +36,10 @@ define('JS_PATH', SITE_ROOT . 'view/js/');
 define('IMG_PATH', SITE_ROOT . 'view/img/');
 
 //LANG
-define('LANG_PATH', SITE_ROOT . 'view/lang');
+define('LANG_PATH', SITE_ROOT . 'view/lang/');
+
+
+//////////////CONTACT//////////////
+
+//VIEW
+define('CONTACT_VIEW_PATH', MODULES_PATH . 'contact/view/');

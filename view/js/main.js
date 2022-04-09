@@ -26,6 +26,24 @@ function loadOut(ms = 400, timeout = 400) {
     }, timeout);
 };//end loadOut
 
+function friendlyURL(url) {
+    var link = "";
+    url = url.replace("?", "");
+    url = url.split("&");
+    cont = 0;
+    for (var i = 0; i < url.length; i++) {
+        cont++;
+        var aux = url[i].split("=");
+        if (cont == 2) {
+            link += "/" + aux[1] + "/";
+        } else {
+            link += "/" + aux[1];
+        }
+    }
+    //return "http://localhost/Concessionaire-Framework_PHP_OO_MVC_JQuery" + link;
+    return window.location.origin + "/Concessionaire-Framework_PHP_OO_MVC_JQuery" + link;
+}//end friendlyURL
+
 function user_info_menu() {
     if (localStorage.getItem('token')) {
         ajaxPromise('module/login/ctrl/ctrl_login.php?op=get_user_data', 'POST', 'JSON', { 'token': localStorage.getItem('token') })
@@ -116,7 +134,7 @@ $(document).ready(function () {
         "preventDuplicates": true,
     };
 
-    $(document).on('click', '#btn-logout', function () {
+    /* $(document).on('click', '#btn-logout', function () {
         logout();
     })//end clickLogout
 
@@ -139,5 +157,6 @@ $(document).ready(function () {
         user_control();
     }
 
-    user_info_menu();
+    user_info_menu(); */
+
 })//end ready

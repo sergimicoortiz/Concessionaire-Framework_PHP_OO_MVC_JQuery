@@ -33,17 +33,23 @@ function check_email() {
 
     if (result) {
         data = Object.fromEntries(new FormData(document.getElementById('contact_form')));
-        send_email();
+        send_email(data);
     }
 }//end check_email
 
 function send_email(data_email) {
-    ajaxPromise(friendlyURL('?page=contact&op=send_email_contact'), 'POST', 'JSON')
+    ajaxPromise(friendlyURL('?page=contact&op=send_email_contact'), 'POST', 'JSON', data_email)
         .then(function (data) {
-            console.log(data);
+            if (data == 'ok') {
+                document.getElementById('status').innerHTML = 'Email Sended';
+            } else {
+                var callback = friendlyURL('?page=error&op=503&desc=send_email_ajax_error');
+                window.location.href = callback;
+            }//end else if
         })
         .catch(function () {
-            console.log('error send email');
+            var callback = friendlyURL('?page=error&op=503&desc=send_email_ajax_catch');
+            window.location.href = callback;
         })//end ajaxPromise
 }
 

@@ -1,6 +1,8 @@
 <?php
 require_once('paths.php');
 require_once('utils/common.inc.php');
+require_once('utils/mail.inc.php');
+//require_once('autoload.php');
 
 class router
 {
@@ -22,7 +24,7 @@ class router
         if (isset($_GET['page'])) {
             $this->uriModule = $_GET['page'];
         } else {
-             //$this->uriModule = 'home';
+            //$this->uriModule = 'home';
             $this->uriModule = 'contact';
         }
         if (isset($_GET['op'])) {

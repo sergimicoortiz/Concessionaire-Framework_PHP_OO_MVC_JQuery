@@ -1,8 +1,7 @@
 <?php
-require_once('paths.php');
-require_once('utils/common.inc.php');
-require_once('utils/mail.inc.php');
-//require_once('autoload.php');
+//require_once('paths.php');
+//require_once('utils/common.inc.php');
+require_once('autoload.php');
 
 class router
 {
@@ -17,7 +16,7 @@ class router
             self::$_instance = new self();
         }
         return self::$_instance;
-    }
+    } //getInstance
 
     function __construct()
     {
@@ -32,7 +31,7 @@ class router
         } else {
             $this->uriFunction = 'view';
         }
-    }
+    } //constructor
 
     function routingStart()
     {
@@ -41,7 +40,7 @@ class router
         } catch (Exception $e) {
             common::load_error();
         }
-    }
+    } //routinStart
 
     private function loadModule()
     {
@@ -60,7 +59,7 @@ class router
             }
         }
         throw new Exception('Not Module found.');
-    }
+    } //loadModule
 
     private function loadFunction()
     {
@@ -74,7 +73,7 @@ class router
             }
         }
         throw new Exception('Not Function found.');
-    }
-}
+    } //loadFunction
+} //class
 
 router::getInstance()->routingStart();

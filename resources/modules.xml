@@ -4,4 +4,8 @@
         <name>contact</name>
         <uri>contact</uri>
     </module>
+    <module>
+        <name>error</name>
+        <uri>error</uri>
+    </module>
 </modules>

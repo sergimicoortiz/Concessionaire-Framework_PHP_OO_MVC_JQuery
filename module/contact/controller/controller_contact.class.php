@@ -26,5 +26,5 @@ class controller_contact
             echo json_encode('error');
             exit;
         } //end if
-    }
+    }//end send_email_contact
 }//class

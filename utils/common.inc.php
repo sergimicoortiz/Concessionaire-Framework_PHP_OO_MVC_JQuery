@@ -12,6 +12,11 @@ class common
         require_once(VIEW_PATH_INC . 'footer.html');
     } //end load error
 
+    public static function load_error_debug($e)
+    {
+        echo $e;
+    } //end load_error_debug
+
     public static function load_view($top_page, $view)
     {
         $top_page = VIEW_PATH_INC . $top_page;
@@ -30,7 +35,7 @@ class common
     public static function load_model($model, $function = null, $args = null)
     {
         $dir = explode('_', $model);
-        $path = constant('MODEL_' . strtoupper($dir[0])) .  $model . '.class.singleton.php';
+        $path = constant(strtoupper($dir[0]) . '_MODEL_PATH') .  $model . '.class.singleton.php';
         if (file_exists($path)) {
             require_once($path);
             if (method_exists($model, $function)) {
@@ -44,4 +49,18 @@ class common
         throw new Exception();
     } //end load model
 
+    public static function friendlyURL($url)
+    {
+        $link = "";
+        if (URL_FRIENDLY) {
+            $url = explode("&", str_replace("?", "", $url));
+            foreach ($url as $key => $value) {
+                $aux = explode("=", $value);
+                $link .=  $aux[1] . "/";
+            }
+        } else {
+            $link = "index.php?" . $url;
+        } // end_else
+        return SITE_PATH . $link;
+    } // end friendlyURL
 }//class

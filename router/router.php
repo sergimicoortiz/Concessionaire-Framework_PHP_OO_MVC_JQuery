@@ -38,7 +38,8 @@ class router
         try {
             call_user_func(array($this->loadModule(), $this->loadFunction()));
         } catch (Exception $e) {
-            common::load_error();
+             common::load_error();
+            //common::load_error_debug($e);
         }
     } //routinStart
 

@@ -38,8 +38,15 @@ define('IMG_PATH', SITE_ROOT . 'view/img/');
 //LANG
 define('LANG_PATH', SITE_ROOT . 'view/lang/');
 
+//URL_FRIENDLY  ON or OFF
+define('URL_FRIENDLY', true);
 
 //////////////CONTACT//////////////
 
 //VIEW
 define('CONTACT_VIEW_PATH', MODULES_PATH . 'contact/view/');
+
+//////////////ERROR//////////////
+
+//MODEL
+define('ERROR_MODEL_PATH', MODULES_PATH . 'error/model/MODEL/');

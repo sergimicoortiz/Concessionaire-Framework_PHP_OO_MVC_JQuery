@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo SITE_PATH ?>view/css/reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo SITE_PATH ?>view/css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo SITE_PATH ?>view/css/slider.css">
-    <link rel="stylesheet" href="view/css/loading.css">
+    <link rel="stylesheet" href="<?php echo SITE_PATH ?>view/css/loading.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300' rel='stylesheet' type='text/css'>
 
     <!-- jquery -->

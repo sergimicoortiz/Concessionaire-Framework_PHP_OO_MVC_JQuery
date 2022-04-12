@@ -43,12 +43,12 @@ function send_email(data_email) {
             if (data == 'ok') {
                 document.getElementById('status').innerHTML = 'Email Sended';
             } else {
-                var callback = friendlyURL('?page=error&op=503&desc=send_email_ajax_error');
+                var callback = friendlyURL('?page=error&op=view&param=503&param2=send_email_ajax_error');
                 window.location.href = callback;
             }//end else if
         })
         .catch(function () {
-            var callback = friendlyURL('?page=error&op=503&desc=send_email_ajax_catch');
+            var callback = friendlyURL('?page=error&op=view&param=503&param2=send_email_ajax_catch');
             window.location.href = callback;
         })//end ajaxPromise
 }

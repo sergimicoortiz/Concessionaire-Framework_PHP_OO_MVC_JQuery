@@ -37,7 +37,7 @@ CREATE TABLE `brands` (
 
 LOCK TABLES `brands` WRITE;
 /*!40000 ALTER TABLE `brands` DISABLE KEYS */;
-INSERT INTO `brands` VALUES (868,'audi','view/images/brand_logos/audi.jpg'),(887,'bmw','view/images/brand_logos/bmw.jpg'),(900,'cadillac','view/images/brand_logos/cadillac.jpg'),(910,'chevrolet','view/images/brand_logos/chevrolet.jpg'),(911,'chrysler','view/images/brand_logos/chrysler.jpg'),(913,'citroen','view/images/brand_logos/citroen.jpg'),(917,'dacia','view/images/brand_logos/dacia.jpg'),(918,'daewoo','view/images/brand_logos/daewoo.jpg'),(934,'dodge','view/images/brand_logos/dodge.jpg'),(957,'fiat','view/images/brand_logos/fiat.jpg'),(963,'ford','view/images/brand_logos/ford.jpg'),(997,'honda','view/images/brand_logos/honda.jpg'),(1003,'hummer','view/images/brand_logos/hummer.jpg'),(1005,'hyundai','view/images/brand_logos/hyundai.jpg'),(1009,'infiniti','view/images/brand_logos/infiniti.jpg'),(1019,'jaguar','view/images/brand_logos/jaguar.jpg'),(1022,'jeep','view/images/brand_logos/jeep.jpg'),(1032,'kia','view/images/brand_logos/kia.jpg'),(1044,'lexus','view/images/brand_logos/lexus.jpg'),(1068,'mazda','view/images/brand_logos/mazda.jpg'),(1074,'mercedes-benz','view/images/brand_logos/mercedes-benz.jpg'),(1080,'mini','view/images/brand_logos/mini.jpg'),(1081,'mitsubishi','view/images/brand_logos/mitsubishi.jpg'),(1093,'nissan','view/images/brand_logos/nissan.jpg'),(1097,'opel','view/images/brand_logos/opel.jpg'),(1107,'peugeot','view/images/brand_logos/peugeot.jpg'),(1114,'porsche','view/images/brand_logos/porsche.jpg'),(1124,'renault','view/images/brand_logos/renault.jpg'),(1135,'rover','view/images/brand_logos/rover.jpg'),(1137,'saab','view/images/brand_logos/saab.jpg'),(1144,'seat','view/images/brand_logos/seat.jpg'),(1152,'skoda','view/images/brand_logos/skoda.jpg'),(1153,'smart','view/images/brand_logos/smart.jpg'),(1163,'subaru','view/images/brand_logos/subaru.jpg'),(1165,'suzuki','view/images/brand_logos/suzuki.jpg'),(1174,'toyota','view/images/brand_logos/toyota.jpg'),(1191,'volkswagen','view/images/brand_logos/volkswagen.jpg'),(1192,'volvo','view/images/brand_logos/volvo.jpg');
+INSERT INTO `brands` VALUES (868,'audi','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/audi.jpg'),(887,'bmw','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/bmw.jpg'),(900,'cadillac','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/cadillac.jpg'),(910,'chevrolet','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/chevrolet.jpg'),(911,'chrysler','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/chrysler.jpg'),(913,'citroen','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/citroen.jpg'),(917,'dacia','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/dacia.jpg'),(918,'daewoo','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/daewoo.jpg'),(934,'dodge','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/dodge.jpg'),(957,'fiat','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/fiat.jpg'),(963,'ford','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/ford.jpg'),(997,'honda','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/honda.jpg'),(1003,'hummer','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/hummer.jpg'),(1005,'hyundai','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/hyundai.jpg'),(1009,'infiniti','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/infiniti.jpg'),(1019,'jaguar','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/jaguar.jpg'),(1022,'jeep','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/jeep.jpg'),(1032,'kia','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/kia.jpg'),(1044,'lexus','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/lexus.jpg'),(1068,'mazda','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/mazda.jpg'),(1074,'mercedes-benz','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/mercedes-benz.jpg'),(1080,'mini','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/mini.jpg'),(1081,'mitsubishi','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/mitsubishi.jpg'),(1093,'nissan','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/nissan.jpg'),(1097,'opel','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/opel.jpg'),(1107,'peugeot','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/peugeot.jpg'),(1114,'porsche','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/porsche.jpg'),(1124,'renault','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/renault.jpg'),(1135,'rover','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/rover.jpg'),(1137,'saab','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/saab.jpg'),(1144,'seat','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/seat.jpg'),(1152,'skoda','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/skoda.jpg'),(1153,'smart','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/smart.jpg'),(1163,'subaru','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/subaru.jpg'),(1165,'suzuki','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/suzuki.jpg'),(1174,'toyota','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/toyota.jpg'),(1191,'volkswagen','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/volkswagen.jpg'),(1192,'volvo','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/brand_logos/volvo.jpg');
 /*!40000 ALTER TABLE `brands` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,7 +123,7 @@ DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `category_id` int NOT NULL AUTO_INCREMENT,
   `category_name` char(30) DEFAULT NULL,
-  `category_img` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `category_img` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`category_id`),
   UNIQUE KEY `uniq_cat_nme` (`category_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -135,7 +135,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Preowned','view/images/category/pre-owned.png'),(2,'Km 0','view/images/category/0km.png'),(3,'Economic','view/images/category/economic.jpg'),(4,'Second Hand','view/images/category/second.jpeg'),(5,'Adapted','view/images/category/adapted.jpeg');
+INSERT INTO `category` VALUES (1,'Preowned','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/category/pre-owned.png'),(2,'Km 0','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/category/0km.png'),(3,'Economic','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/category/economic.jpg'),(4,'Second Hand','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/category/second.jpeg'),(5,'Adapted','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/category/adapted.jpeg');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,7 +152,7 @@ CREATE TABLE `error` (
   `error_type` int DEFAULT NULL,
   `error_description` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`error_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=502 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=516 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,6 +161,7 @@ CREATE TABLE `error` (
 
 LOCK TABLES `error` WRITE;
 /*!40000 ALTER TABLE `error` DISABLE KEYS */;
+INSERT INTO `error` VALUES (502,'2022-04-12 21:10:38',404,'desc test'),(503,'2022-04-12 21:10:59',404,'desc test'),(504,'2022-04-12 21:11:05',404,'desc test'),(505,'2022-04-12 21:15:55',503,''),(506,'2022-04-12 21:16:02',503,''),(507,'2022-04-12 21:16:10',503,'send_email_ajax_error'),(508,'2022-04-12 21:16:44',503,'send_email_ajax_error'),(509,'2022-04-12 21:21:42',503,'send_email_ajax_error'),(510,'2022-04-12 21:21:48',404,'test'),(511,'2022-04-13 14:32:08',404,''),(512,'2022-04-13 14:32:41',404,''),(513,'2022-04-13 14:32:42',404,''),(514,'2022-04-13 14:33:05',404,''),(515,'2022-04-13 14:54:26',503,'slide_read_error_ajax');
 /*!40000 ALTER TABLE `error` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +175,7 @@ DROP TABLE IF EXISTS `fuel_type`;
 CREATE TABLE `fuel_type` (
   `fuel_type_id` int NOT NULL AUTO_INCREMENT,
   `fuel_type_name` char(30) DEFAULT NULL,
-  `fuel_type_img` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `fuel_type_img` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`fuel_type_id`),
   UNIQUE KEY `fuel_type_uniq` (`fuel_type_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -186,7 +187,7 @@ CREATE TABLE `fuel_type` (
 
 LOCK TABLES `fuel_type` WRITE;
 /*!40000 ALTER TABLE `fuel_type` DISABLE KEYS */;
-INSERT INTO `fuel_type` VALUES (1,'Hybrid','view/images/fuel_type/hybrid.jpg'),(2,'Gasoline','view/images/fuel_type/gasoline.jpg'),(3,'Gasoil','view/images/fuel_type/gasoil.jpg'),(4,'Electric','view/images/fuel_type/electric.jpeg');
+INSERT INTO `fuel_type` VALUES (1,'Hybrid','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/fuel_type/hybrid.jpg'),(2,'Gasoline','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/fuel_type/gasoline.jpg'),(3,'Gasoil','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/fuel_type/gasoil.jpg'),(4,'Electric','/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/fuel_type/electric.jpeg');
 /*!40000 ALTER TABLE `fuel_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,4 +314,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-08 18:38:21
+-- Dump completed on 2022-04-13 15:09:06

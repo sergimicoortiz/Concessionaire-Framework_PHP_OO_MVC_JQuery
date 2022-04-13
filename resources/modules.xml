@@ -8,4 +8,8 @@
         <name>error</name>
         <uri>error</uri>
     </module>
+    <module>
+        <name>home</name>
+        <uri>home</uri>
+    </module>
 </modules>

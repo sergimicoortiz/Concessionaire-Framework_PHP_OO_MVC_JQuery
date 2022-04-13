@@ -23,8 +23,7 @@ class router
         if (isset($_GET['page'])) {
             $this->uriModule = $_GET['page'];
         } else {
-            //$this->uriModule = 'home';
-            $this->uriModule = 'contact';
+            $this->uriModule = 'home';
         }
         if (isset($_GET['op'])) {
             $this->uriFunction = ($_GET['op'] === "") ? 'view' : $_GET['op'];
@@ -38,7 +37,7 @@ class router
         try {
             call_user_func(array($this->loadModule(), $this->loadFunction()));
         } catch (Exception $e) {
-             common::load_error();
+            common::load_error();
             //common::load_error_debug($e);
         }
     } //routinStart

@@ -50,3 +50,11 @@ define('CONTACT_VIEW_PATH', MODULES_PATH . 'contact/view/');
 
 //MODEL
 define('ERROR_MODEL_PATH', MODULES_PATH . 'error/model/MODEL/');
+
+//////////////HOME//////////////
+
+//VIEW
+define('HOME_VIEW_PATH', MODULES_PATH . 'home/view/');
+
+//MODEL
+define('HOME_MODEL_PATH', MODULES_PATH . 'home/model/MODEL/');

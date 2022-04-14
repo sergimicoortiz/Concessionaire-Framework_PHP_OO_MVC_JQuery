@@ -8,4 +8,12 @@
         <name>get_brands_rand</name>
         <uri>get_brands_rand</uri>
     </function>
+    <function>
+        <name>get_category_rand</name>
+        <uri>get_category_rand</uri>
+    </function>
+    <function>
+        <name>get_fuel_rand_eco</name>
+        <uri>get_fuel_rand_eco</uri>
+    </function>
 </functions>

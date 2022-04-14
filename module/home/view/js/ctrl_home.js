@@ -1,7 +1,6 @@
 function slider() {
     ajaxPromise(friendlyURL('?page=home&op=get_brands_rand'), 'GET', 'JSON')
         .then(function (data) {
-            //console.log(data);
             data.forEach(brand => {
                 var img = window.location.origin + brand['brand_img'];
                 var name = brand['brand_name'].replace(" ", "_");
@@ -22,7 +21,6 @@ function slider() {
                 smartSpeed: 800
             });//end owlCarousel
         }).catch(function () {
-            //console.log('catch')
             var callback = friendlyURL('?module=error&op=view&param=503&param2=slide_read_error_ajax');
             window.location.href = callback;
         })//end ajaxPrimise
@@ -31,60 +29,49 @@ function slider() {
 
 function category() {
 
-    ajaxPromise('module/home/ctrl/ctrl_home.php?op=category', 'GET', 'JSON').then(function (data) {
-        if (data == 'error') {
-            var callback = 'index.php?module=error&op=503&desc=category_read_error_data';
-            window.location.href = callback;
-        } else {
-            var last = "";
+    ajaxPromise(friendlyURL('?page=home&op=get_category_rand'), 'GET', 'JSON').then(function (data) {
 
-            data.forEach(category => {
-                var name = category['category_name'].replace(" ", "_");
-                last = name;
-                $('<div></div>').attr('id', name).appendTo('#category');
-                $('<img>').attr('src', category['category_img']).appendTo('#' + name);
-                $('<p></p>').attr('id', 'title_' + name).attr('class', 'text-1').attr('data-tr', category['category_name']).appendTo('#' + name).html(category['category_name']);
-                $('<a></a>').attr('id', name).attr('class', 'button buttons_home').attr('data-tr', 'See More').attr('data-filter', 'cat.category_name').appendTo('#' + name).html('See More');
-            });//end foreach
+        var last = "";
+        data.forEach(category => {
+            var name = category['category_name'].replace(" ", "_");
+            var img = window.location.origin + category['category_img'];
+            last = name;
+            $('<div></div>').attr('id', name).appendTo('#category');
+            $('<img>').attr('src', img).appendTo('#' + name);
+            $('<p></p>').attr('id', 'title_' + name).attr('class', 'text-1').attr('data-tr', category['category_name']).appendTo('#' + name).html(category['category_name']);
+            $('<a></a>').attr('id', name).attr('class', 'button buttons_home').attr('data-tr', 'See More').attr('data-filter', 'cat.category_name').appendTo('#' + name).html('See More');
+        });//end foreach
 
-            $('#' + last).addClass('last');
+        $('#' + last).addClass('last');
 
-        }//end else if
     }).catch(function () {
-        var callback = 'index.php?module=error&op=503&desc=category_read_error_ajax';
+        var callback = friendlyURL('?module=error&op=view&param=503&param2=category_read_error_ajax');
         window.location.href = callback;
     });
 }//end category
 
 function fuel() {
 
-    ajaxPromise('module/home/ctrl/ctrl_home.php?op=fuel', 'GET', 'JSON').then(function (data) {
-        if (data == 'error') {
-            var callback = 'index.php?module=error&op=503&desc=fuel_read_error_data';
-            window.location.href = callback;
+    ajaxPromise(friendlyURL('?page=home&op=get_fuel_rand_eco'), 'GET', 'JSON').then(function (data) {
+        var last = "";
+        if (data.length == 2) {
+            $('#fuel_type').addClass('box_fuel');
         } else {
-            var last = "";
-
-            if (data.length == 2) {
-                $('#fuel_type').addClass('box_fuel');
-            } else {
-                $('#fuel_type').addClass('box-1');
-            }//end else if
-
-            data.forEach(fuel_type => {
-                var name = fuel_type['fuel_type_name'].replace(" ", "_");
-                last = name;
-                $('<div></div>').attr('id', name).appendTo('#fuel_type');
-                $('<img>').attr('src', fuel_type['fuel_type_img']).appendTo('#' + name);
-                $('<p></p>').attr('id', 'title_' + name).attr('class', 'text-1').attr('data-tr', fuel_type['fuel_type_name']).appendTo('#' + name).html(fuel_type['fuel_type_name']);
-                $('<a></a>').attr('id', name).attr('class', 'button buttons_home').attr('data-tr', 'See More').attr('data-filter', 'f.fuel_type_name').appendTo('#' + name).html('See More');
-            });//end foreach
-
-            $('#' + last).addClass('last');
-
+            $('#fuel_type').addClass('box-1');
         }//end else if
+        data.forEach(fuel_type => {
+            var img = window.location.origin + fuel_type['fuel_type_img'];
+            var name = fuel_type['fuel_type_name'].replace(" ", "_");
+            last = name;
+            $('<div></div>').attr('id', name).appendTo('#fuel_type');
+            $('<img>').attr('src', img).appendTo('#' + name);
+            $('<p></p>').attr('id', 'title_' + name).attr('class', 'text-1').attr('data-tr', fuel_type['fuel_type_name']).appendTo('#' + name).html(fuel_type['fuel_type_name']);
+            $('<a></a>').attr('id', name).attr('class', 'button buttons_home').attr('data-tr', 'See More').attr('data-filter', 'f.fuel_type_name').appendTo('#' + name).html('See More');
+        });//end foreach
+        $('#' + last).addClass('last');
+
     }).catch(function () {
-        var callback = 'index.php?module=error&op=503&desc=fuel_read_error_ajax';
+        var callback = friendlyURL('?module=error&op=view&param=503&param2=fuel_read_error_ajax');
         window.location.href = callback;
     });
 }//end fuel
@@ -162,9 +149,9 @@ function clicks() {
 $(document).ready(function () {
     loadIn();
     slider();
-    //category();
-    //fuel();
-    //related_books();
+    category();
+    fuel();
+    related_books();
     //clicks();
     loadOut();
 });//end ready

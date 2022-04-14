@@ -24,4 +24,14 @@ class home_bll
         return $this->dao->get_brands_rand($this->db, $args[0]);
     } //end get_brands_rand_BLL
 
+    public function get_category_rand_BLl($args)
+    {
+        return $this->dao->get_category_rand($this->db, $args[0]);
+    } //end get_category_rand_BLL 
+
+    public function get_fuel_rand_eco_BLL($args)
+    {
+        return $this->dao->get_fuel_rand_eco($this->db, $args[0]);
+    } //end get_fuel_rand_eco_BLL
+
 }//class

@@ -58,3 +58,11 @@ define('HOME_VIEW_PATH', MODULES_PATH . 'home/view/');
 
 //MODEL
 define('HOME_MODEL_PATH', MODULES_PATH . 'home/model/MODEL/');
+
+//////////////SHOP//////////////
+
+//VIEW
+define('SHOP_VIEW_PATH', MODULES_PATH . 'shop/view/');
+
+//MODEL
+define('SHOP_MODEL_PATH', MODULES_PATH . 'shop/model/MODEL/');

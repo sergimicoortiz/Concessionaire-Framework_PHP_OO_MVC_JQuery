@@ -12,4 +12,8 @@
         <name>home</name>
         <uri>home</uri>
     </module>
+    <module>
+        <name>shop</name>
+        <uri>shop</uri>
+    </module>
 </modules>

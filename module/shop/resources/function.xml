@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functions>
+    <function>
+        <name>view</name>
+        <uri>view</uri>
+    </function>
+    <function>
+        <name>list_cars</name>
+        <uri>list_cars</uri>
+    </function>
+    <function>
+        <name>list_brands</name>
+        <uri>list_brands</uri>
+    </function>
+    <function>
+        <name>list_category</name>
+        <uri>list_category</uri>
+    </function>
+    <function>
+        <name>list_fuels</name>
+        <uri>list_fuels</uri>
+    </function>
+    <function>
+        <name>list_city</name>
+        <uri>list_city</uri>
+    </function>
+    <function>
+        <name>count_cars</name>
+        <uri>count_cars</uri>
+    </function>
+</functions>

@@ -22,6 +22,11 @@ class shop_model
         return $this->bll->list_cars_BLL($args);
     } //list_cars
 
+    public function list_cars_filters($args)
+    {
+        return $this->bll->list_cars_filters_BLl($args);
+    } //end list_cars_filters
+
     public function list_brands()
     {
         return $this->bll->list_brands_BLL();
@@ -41,8 +46,14 @@ class shop_model
     {
         return $this->bll->list_city_BLL();
     } //list_city
+
     public function count_cars($args)
     {
         return $this->bll->count_cars_BLL($args);
     } //end count_cars
+
+    public function details_car($args)
+    {
+        return $this->bll->details_car_BLL($args);
+    } //end details_car
 }//class

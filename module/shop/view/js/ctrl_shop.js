@@ -53,7 +53,6 @@ function ajaxForSearch(url, f_data = undefined) {
 }//end ajaxForSearch
 
 function loadCars(offset = 0, limit = 8) {
-    resetFilters(); //TEMPORAL
     /* localStorage.setItem('actual_page', "car_list");
     GetQuerystring();
     const urlsearch = window.location.search;
@@ -104,6 +103,7 @@ function loadCars(offset = 0, limit = 8) {
     loadOut();
 
     $(document).on('click', '#send_filters', function () {
+        localStorage.removeItem('page');
         var price = $('#price').val();
         var view_count = $('#view_count').val();
         var brands = $('#brands').val();
@@ -112,12 +112,15 @@ function loadCars(offset = 0, limit = 8) {
         var city = $('#city').val()
         const filters = [['c.price', price], ['b.brand_name', brands], ['cat.category_name', category], ['f.fuel_type_name', fuel], ['c.city', city], ['c.view_count', view_count]];
         localStorage.setItem('filters', JSON.stringify(filters));
-        SetQuerystring();
+        window.location.reload();
+        //SetQuerystring();
     })//end click send
 
     $(document).on('click', '#reset_filters', function () {
+        localStorage.removeItem('page');
         resetFilters();
-        SetQuerystring();
+        window.location.reload();
+        //SetQuerystring();
     })//end click reset
 
 }//end loadCars
@@ -135,57 +138,49 @@ function shop_read(id) {
 
     loadIn();
 
-    ajaxPromise('module/shop/ctrl/ctrl_shop.php?op=readajax&id=' + id, 'GET', 'JSON').then(function (data) {
-        ajaxPromise('module/shop/ctrl/ctrl_shop.php?op=readajax_img&id=' + id, 'GET', 'JSON').then(function (img) {
-            if (data == 'error' || img == 'error') {
-                var callback = 'index.php?module=error&op=503&desc=shop_details_error_data';
-                window.location.href = callback;
-            } else {
-                $('<div></div>').attr('id', 'details').attr('class', 'details').appendTo('#shop_list');
-                $('<div></div>').attr('id', 'slider').appendTo('#details');
-                var car_img = null;
-                var first_img = true;
-                img.forEach(img_row => {
-                    if (first_img == true) { car_img = img_row['car_img_file']; first_img = false; }
-                    $('<div></div>').attr('class', 'item').appendTo('#slider').html("<img src=" + img_row['car_img_file'] + ">")
-                });//end foreach img
-                var extres = formatter_extres.format(data['extres'].split(':').slice(0, -1));
+    ajaxPromise(friendlyURL('?page=shop&op=details_car'), 'POST', 'JSON', { 'id': id })
+        .then(function (data_tmp) {
+            var data = data_tmp.car[0];
+            var first_img = window.location.origin + '/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/' + data_tmp.img[0].car_img_file.split('/')[3]
 
-                $('<div></div>').attr('id', 'detail_content').appendTo('#details');
-                print_like(data['car_id'], '#detail_content');
-                $('<p></p>').appendTo('#detail_content').html('<span data-tr="brand_name">brand</span>: <span class="text-detail">' + data['brand_name'] + '</span>');
-                $('<p></p>').appendTo('#detail_content').html('<span data-tr="model_name">model</span>: <span class="text-detail">' + data['model_name'] + '</span>');
-                $('<p></p>').appendTo('#detail_content').html('<span data-tr="price">price</span>: <span class="text-detail">' + data['price'] + ' €</span>');
-                $('<p></p>').appendTo('#detail_content').html('<span data-tr="km">km</span>: <span class="text-detail">' + data['km'] + '</span>');
-                $('<p></p>').appendTo('#detail_content').html('<span data-tr="category_name">category</span>: <span class="text-detail" data-tr="' + data['category_name'] + '">' + data['category_name'] + '</span>');
-                $('<p></p>').appendTo('#detail_content').html('<span data-tr="fuel_type_name">fuel</span>: <span class="text-detail" data-tr="' + data['fuel_type_name'] + '">' + data['fuel_type_name'] + '</span>');
-                $('<p></p>').appendTo('#detail_content').html('<span data-tr="extres">extres</span>: <span class="text-detail">' + extres + '</span>');
-                $('<p></p>').appendTo('#detail_content').html('<span data-tr="description">description</span>:<br> <textarea cols="70" rows="13" disabled>' + data['description'] + '</textarea>');
-                $('<i></i>').attr('class', 'fa-solid fa-x fa-3x').attr('id', 'close_btn').appendTo('#details');
-                AddMap([data['lon'], data['lat']], 8, 'width: 100px; height: 500px; padding-left: 20%; margin-left: 20%; margin-top: 2%;');
-                map_details(data, car_img);
-                $('#slider').addClass('owl-carousel');
-                $('#slider').addClass('owl-theme');
-                $('.owl-carousel').owlCarousel({
-                    items: 1,
-                    loop: true,
-                    margin: 10,
-                    nav: false,
-                    autoplay: true,
-                    autoplayTimeout: 5000,
-                    smartSpeed: 800
-                });//end owlCarousel
-                related_cars(data);
-            }//end else if
+            $('<div></div>').attr('id', 'details').attr('class', 'details').appendTo('#shop_list');
+            $('<div></div>').attr('id', 'slider').appendTo('#details');
 
+            data_tmp.img.forEach(img_row => {
+                var img_car = window.location.origin + '/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/' + img_row.car_img_file.split('/')[3]
+                $('<div></div>').attr('class', 'item').appendTo('#slider').html("<img src=" + img_car + ">")
+            });//end foreach img
+            var extres = formatter_extres.format(data['extres'].split(':').slice(0, -1));
+
+            $('<div></div>').attr('id', 'detail_content').appendTo('#details');
+            //print_like(data['car_id'], '#detail_content');
+            $('<p></p>').appendTo('#detail_content').html('<span data-tr="brand_name">brand</span>: <span class="text-detail">' + data['brand_name'] + '</span>');
+            $('<p></p>').appendTo('#detail_content').html('<span data-tr="model_name">model</span>: <span class="text-detail">' + data['model_name'] + '</span>');
+            $('<p></p>').appendTo('#detail_content').html('<span data-tr="price">price</span>: <span class="text-detail">' + data['price'] + ' €</span>');
+            $('<p></p>').appendTo('#detail_content').html('<span data-tr="km">km</span>: <span class="text-detail">' + data['km'] + '</span>');
+            $('<p></p>').appendTo('#detail_content').html('<span data-tr="category_name">category</span>: <span class="text-detail" data-tr="' + data['category_name'] + '">' + data['category_name'] + '</span>');
+            $('<p></p>').appendTo('#detail_content').html('<span data-tr="fuel_type_name">fuel</span>: <span class="text-detail" data-tr="' + data['fuel_type_name'] + '">' + data['fuel_type_name'] + '</span>');
+            $('<p></p>').appendTo('#detail_content').html('<span data-tr="extres">extres</span>: <span class="text-detail">' + extres + '</span>');
+            $('<p></p>').appendTo('#detail_content').html('<span data-tr="description">description</span>:<br> <textarea cols="70" rows="13" disabled>' + data['description'] + '</textarea>');
+            $('<i></i>').attr('class', 'fa-solid fa-x fa-3x').attr('id', 'close_btn').appendTo('#details');
+            AddMap([data['lon'], data['lat']], 8, 'width: 100px; height: 500px; padding-left: 20%; margin-left: 20%; margin-top: 2%;');
+            map_details(data, first_img);
+            $('#slider').addClass('owl-carousel');
+            $('#slider').addClass('owl-theme');
+            $('.owl-carousel').owlCarousel({
+                items: 1,
+                loop: true,
+                margin: 10,
+                nav: false,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                smartSpeed: 800
+            });//end owlCarousel
+            related_cars(data);
         }).catch(function () {
-            var callback = 'index.php?module=error&op=503&desc=shop_list_error_ajax_img_' + data['car_id'];
+            var callback = friendlyURL('?module=error&op=view&param=503&param2=shop_details_error_ajax');
             window.location.href = callback;
-        })//end ajaxPromise img
-    }).catch(function () {
-        var callback = 'index.php?module=error&op=503&desc=shop_details_error_ajax';
-        window.location.href = callback;
-    })//end ajaxPromise
+        })//end ajaxPromise
     loadOut();
 }//end read
 
@@ -193,12 +188,9 @@ function add_related_cars(car, box_num) {
     const filters = [['c.price', 'null'], ['b.brand_name', car.brand_name], ['cat.category_name', 'null'], ['f.fuel_type_name', 'null'], ['c.city', 'null'], ['c.view_count', 'null']];
     const limit = 4;
     const offset = box_num * limit;
-    ajaxPromise('module/shop/ctrl/ctrl_shop.php?op=filters', 'POST', 'JSON', { "f_data": filters, "offset": offset, "limit": limit })
+    ajaxPromise(friendlyURL('?page=shop&op=list_cars_filters'), 'POST', 'JSON', { "f_data": filters, "offset": offset, "limit": limit })
         .then(function (data) {
-            if (data == 'error') {
-                var callback = 'index.php?module=error&op=503&desc=shop_related_cars_error_data';
-                window.location.href = callback;
-            } else if (data == 'noresult') {
+            if (data.length == 0) {
                 $('#see_more_cars').empty();
                 $('<p></p>').attr('class', 'titels').attr('data-tr', 'NO RESULTS').attr('id', 'scroll_end').appendTo('#shop_list').html('NO RESULTS');
             } else {
@@ -209,7 +201,7 @@ function add_related_cars(car, box_num) {
                         var title = car_data['brand_name'] + ': ' + car_data['model_name'].toUpperCase();
                         last = '#main_' + id;
                         var extres = formatter_extres.format(car_data['extres'].split(':').slice(0, -1));
-                        const img = car_data.img;
+                        const img = window.location.origin + '/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/img/' + car_data.img.split('/')[3]
                         $('<div></div>').attr('id', 'main_' + id).attr('class', 'div_hover').appendTo('#box_' + box_num);
                         $('<img>').attr('src', img).attr('class', 'img').appendTo('#main_' + id);
                         $('<p></p>').attr('class', 'text-1').appendTo('#main_' + id).html(title + '<strong>' + car_data['price'] + '€</strong>');
@@ -219,13 +211,13 @@ function add_related_cars(car, box_num) {
                         $('<p></p>').attr('class', 'upper').appendTo('#main_' + id).html('<b data-tr="view_count">View count</b>: ' + car_data['view_count']);
                         $('<p></p>').attr('class', 'upper').appendTo('#main_' + id).html('<b data-tr="extres">extres</b>: ' + extres);
                         $('<a></a>').attr('href', '#').attr('class', 'button').attr('id', id).attr('data-tr', 'See More').appendTo('#main_' + id).html('See More');
-                        print_like(id);
+                        //print_like(id);
                     }
                 });//end foreach
             }//end else
         })
         .catch(function () {
-            var callback = 'index.php?module=error&op=503&desc=shop_related_cars_error_ajax';
+            var callback = friendlyURL('?module=error&op=view&param=503&param2=shop_related_cars_error_ajax');
             window.location.href = callback;
         })//end promise
 }//end add_related_cars
@@ -257,12 +249,12 @@ function related_cars(car) {
 
 function printfilters() {
     var filters = JSON.parse(localStorage.getItem('filters'));
-    var f_price = "";
-    var f_brand = "";
-    var f_category = "";
-    var f_fuel = "";
-    var f_city = "";
-    var f_view_count = "";
+    var f_price = "null";
+    var f_brand = "null";
+    var f_category = "null";
+    var f_fuel = "null";
+    var f_city = "null";
+    var f_view_count = "null";
 
     filters.forEach(filter => {
         switch (filter[0]) {
@@ -518,14 +510,8 @@ function map_details(car, car_img) {
 
 function load_pagination(limit = 8) {
     var filters = JSON.parse(localStorage.getItem('filters'));
-    var data_filters = null;
-    filters.forEach(filter => {
-        if (filter[1] != 'null') {
-            data_filters = filters;
-        }//end if
-    });//end foreach
 
-    ajaxPromise(friendlyURL('?page=shop&op=count_cars'), 'POST', 'JSON', { "filters": data_filters })
+    ajaxPromise(friendlyURL('?page=shop&op=count_cars'), 'POST', 'JSON', { "filters": filters })
         .then(function (data) {
             var actual_page = localStorage.getItem('page') | 1;
             var total_pages = 0;
@@ -635,21 +621,26 @@ function clicks() {
 }//end clicks
 
 $(document).ready(function () {
+    if (!window.localStorage.getItem('filters')) {
+        resetFilters();
+    }//end if
+
     localStorage.removeItem('url_callback');
-    var lang_formater = "";
-    if (localStorage.getItem('app-lang') == 'en') {
+
+    var lang_formater = "en-US";
+    /* if (localStorage.getItem('app-lang') == 'en') {
         lang_formater = 'en-US';
     } else {
         lang_formater = 'es-ES';
-    }//end else 
+    }//end else  */
     window.formatter_extres = new Intl.ListFormat(lang_formater, { style: 'long', type: 'conjunction' });
     const map = null;
 
-    if (localStorage.getItem('token')) {
+    /* if (localStorage.getItem('token')) {
         get_user_likes();
     } else {
         localStorage.removeItem('user_likes');
-    }//end if
+    }//end if */
 
     if (localStorage.getItem('details_id')) {
         shop_read(localStorage.getItem('details_id'))

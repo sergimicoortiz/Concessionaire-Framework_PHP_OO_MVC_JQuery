@@ -46,17 +46,84 @@ class shop_bll
 
     public function count_cars_BLL($args)
     {
-        $filters = false;
-        foreach ($args[0] as $filter) {
-            if ($filter[1] != 'null') {
-                $filters = true;
-            } //end if
-        } //end foreach
+        $filters = $args[0];
+        $consulta = "";
+        $filters_consulta = array();
 
-        if ($filters) {
-            return [1];
+        for ($i = 0; $i < count($filters); $i++) {
+
+            switch ($filters[$i][0]) {
+                case 'c.price':
+                    break;
+                case 'c.view_count':
+                    break;
+                default:
+                    if ($filters[$i][1] != "null") {
+                        $filters_consulta[] = ($filters[$i][0] . " = '" . $filters[$i][1] . "'");
+                    } //end if
+                    break;
+            } //end swich
+        } //end for
+        if (count($filters_consulta) != 0) {
+            $consulta .= (" WHERE " . implode(' AND ', $filters_consulta));
+        } //end if
+
+        if ($consulta != '') {
+            return $this->dao->count_cars_filters($this->db, $consulta);
         } else {
             return $this->dao->count_cars($this->db);
-        } //end else iff
+        } //end else if
     } //end count_cars_BLL
+
+    public function list_cars_filters_BLL($args)
+    {
+        $filters = $args[2];
+        $consulta = "";
+        $filters_consulta = array();
+        $order_elements = array();
+
+        for ($i = 0; $i < count($filters); $i++) {
+
+            switch ($filters[$i][0]) {
+                case 'c.price':
+                    if ($filters[$i][1] == 'maytomen') {
+                        $order_elements[] = ($filters[$i][0] . " DESC");
+                    } else if ($filters[$i][1] == 'mentomay') {
+                        $order_elements[] = ($filters[$i][0] . " ASC");
+                    } //end else if
+                    break;
+                case 'c.view_count':
+                    if ($filters[$i][1] == 'maytomen') {
+                        $order_elements[] = ($filters[$i][0] . " DESC");
+                    } else if ($filters[$i][1] == 'mentomay') {
+                        $order_elements[] = ($filters[$i][0] . " ASC");
+                    } //end else if
+                    break;
+
+                default:
+                    if ($filters[$i][1] != "null") {
+                        $filters_consulta[] = ($filters[$i][0] . " = '" . $filters[$i][1] . "'");
+                    } //end if
+                    break;
+            } //end swich
+
+        } //end for
+
+        if (count($filters_consulta) != 0) {
+            $consulta .= (" WHERE " . implode(' AND ', $filters_consulta));
+        } //end if
+
+        if (count($order_elements) != 0) {
+            $consulta .= (' ORDER BY ' . implode(',', $order_elements));
+        } //end if
+
+        return $this->dao->list_cars_filters($this->db, $args[0], $args[1], $consulta);
+    } //end list_cars_filters_BLL
+
+    public function details_car_BLL($args)
+    {
+        $data['car'] = $this->dao->details_car($this->db, $args[0]);
+        $data['img'] = $this->dao->details_car_img($this->db, $args[0]);
+        return $data;
+    } //end details_car_BLL
 }//class

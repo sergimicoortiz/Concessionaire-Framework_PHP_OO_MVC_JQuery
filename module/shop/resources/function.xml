@@ -28,4 +28,12 @@
         <name>count_cars</name>
         <uri>count_cars</uri>
     </function>
+    <function>
+        <name>list_cars_filters</name>
+        <uri>list_cars_filters</uri>
+    </function>
+    <function>
+        <name>details_car</name>
+        <uri>details_car</uri>
+    </function>
 </functions>

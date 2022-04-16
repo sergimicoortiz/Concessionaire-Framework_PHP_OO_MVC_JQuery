@@ -3,6 +3,22 @@ RewriteBase /Concessionaire-Framework_PHP_OO_MVC_JQuery/
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+Rewriterule ^([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)$ index.php?page=$1&op=$2&param=$3&param2=$4&param3=$5&param4=$6&param5=$7&param6=$8&param7=$9 [L,NC,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+Rewriterule ^([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)$ index.php?page=$1&op=$2&param=$3&param2=$4&param3=$5&param4=$6&param5=$7&param6=$8 [L,NC,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+Rewriterule ^([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)$ index.php?page=$1&op=$2&param=$3&param2=$4&param3=$5&param4=$6&param5=$7 [L,NC,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+Rewriterule ^([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)$ index.php?page=$1&op=$2&param=$3&param2=$4&param3=$5&param4=$6 [L,NC,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 Rewriterule ^([^/]*)/([^/]*)/([^/]*)/([^/]*)$ index.php?page=$1&op=$2&param=$3&param2=$4&param3=$5 [L,NC,QSA]
 
 RewriteCond %{REQUEST_FILENAME} !-f

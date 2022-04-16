@@ -139,7 +139,9 @@ function clicks() {
     $(document).on('click', '.buttons_home', function () {
         const filter = this.getAttribute('data-filter');
         const id = this.getAttribute('id').replace('_', ' ');
-        var callback = 'index.php?module=shop&op=list&' + filter + '=' + id;
+        var filters = [[filter, id]];
+        window.localStorage.setItem('filters', JSON.stringify(filters));
+        var callback = friendlyURL('?module=shop&op=view');
         setTimeout(function () {
             window.location.href = callback;
         }, 250);
@@ -152,6 +154,6 @@ $(document).ready(function () {
     category();
     fuel();
     related_books();
-    //clicks();
+    clicks();
     loadOut();
 });//end ready

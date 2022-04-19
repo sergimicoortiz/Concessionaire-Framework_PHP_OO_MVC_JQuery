@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functions>
+    <function>
+        <name>get_categories</name>
+        <uri>get_categories</uri>
+    </function>
+    <function>
+        <name>get_brands</name>
+        <uri>get_brands</uri>
+    </function>
+    <function>
+        <name>get_city</name>
+        <uri>get_city</uri>
+    </function>
+</functions>

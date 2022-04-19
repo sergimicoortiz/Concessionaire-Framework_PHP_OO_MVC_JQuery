@@ -66,3 +66,8 @@ define('SHOP_VIEW_PATH', MODULES_PATH . 'shop/view/');
 
 //MODEL
 define('SHOP_MODEL_PATH', MODULES_PATH . 'shop/model/MODEL/');
+
+//////////////SEARCH//////////////
+
+//MODEL
+define('SEARCH_MODEL_PATH', MODULES_PATH . 'search/model/MODEL/');

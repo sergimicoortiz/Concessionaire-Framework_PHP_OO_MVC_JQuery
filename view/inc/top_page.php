@@ -28,4 +28,4 @@
 
     <script src="<?php echo SITE_PATH ?>view/js/main.js"></script>
     <script src="<?php echo SITE_PATH ?>module/search/view/js/ctrl_search.js"></script>
-    <!-- <script src="view/js/translate.js"></script> -->
+    <script src="<?php echo SITE_PATH ?>view/js/translate.js"></script>

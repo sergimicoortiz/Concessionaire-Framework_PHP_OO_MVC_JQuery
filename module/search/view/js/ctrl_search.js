@@ -73,6 +73,7 @@ function search() {
     if ($('#city_search').val() != '') {
         search.push(['c.city', $('#city_search').val()]);
     }//end if category
+    window.localStorage.removeItem('page');
     window.localStorage.setItem('filters', JSON.stringify(search));
     window.location.href = callback;
 }

@@ -1,0 +1,1 @@
+<script src="<?php echo SITE_PATH ?>module/login/view/js/ctrl_login.js"></script>

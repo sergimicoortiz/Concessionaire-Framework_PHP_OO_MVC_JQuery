@@ -158,5 +158,5 @@ $(document).ready(function () {
     }
 
     user_info_menu(); */
-
+    $('<a></a>').attr('href', friendlyURL('?page=login&op=view')).attr('data-tr', 'login').appendTo('#user_info').html('Login'); //TEMPORAL
 })//end ready

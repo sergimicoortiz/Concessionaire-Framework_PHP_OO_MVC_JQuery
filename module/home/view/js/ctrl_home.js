@@ -130,7 +130,7 @@ function related_books() {
             });//end click
         }//end else if
     }).catch(function () {
-        var callback = 'index.php?module=error&op=503&desc=related_books_read_error_ajax';
+        var callback = friendlyURL('?module=error&op=view&param=503&param2=related_books_read_error_ajax');
         window.location.href = callback;
     });//end ajaxpromise
 }//end related_books

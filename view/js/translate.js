@@ -5,7 +5,7 @@ function translate(lang) {
 
     $('#button-' + lang).prop('selected', true);
 
-    ajaxPromise('view/lang/' + lang + '.json', 'POST', 'JSON')
+    ajaxPromise(window.origin + '/Concessionaire-Framework_PHP_OO_MVC_JQuery/view/lang/' + lang + '.json', 'POST', 'JSON')
         .then(function (data) {
             for (var i = 0; i < elementos.length; i++) {
                 //elementos[i].innerHTML = data[lang][elementos[i].dataset.tr];

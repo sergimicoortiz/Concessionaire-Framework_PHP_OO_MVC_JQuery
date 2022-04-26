@@ -627,12 +627,12 @@ $(document).ready(function () {
 
     localStorage.removeItem('url_callback');
 
-    var lang_formater = "en-US";
-    /* if (localStorage.getItem('app-lang') == 'en') {
+    var lang_formater = "";
+    if (localStorage.getItem('app-lang') == 'en') {
         lang_formater = 'en-US';
     } else {
         lang_formater = 'es-ES';
-    }//end else  */
+    }//end else 
     window.formatter_extres = new Intl.ListFormat(lang_formater, { style: 'long', type: 'conjunction' });
     const map = null;
 

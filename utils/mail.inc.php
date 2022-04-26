@@ -1,6 +1,6 @@
 <?php
 
-require_once(UTILS_PATH . 'vendor/autoload.php');
+require_once(SITE_ROOT . 'vendor/autoload.php');
 
 use \Mailjet\Resources;
 

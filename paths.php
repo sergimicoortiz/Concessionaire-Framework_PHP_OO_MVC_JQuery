@@ -71,3 +71,11 @@ define('SHOP_MODEL_PATH', MODULES_PATH . 'shop/model/MODEL/');
 
 //MODEL
 define('SEARCH_MODEL_PATH', MODULES_PATH . 'search/model/MODEL/');
+
+//////////////LOGIN//////////////
+
+//VIEW
+define('LOGIN_VIEW_PATH', MODULES_PATH . 'login/view/');
+
+//MODEL
+define('LOGIN_MODEL_PATH', MODULES_PATH . 'login/model/MODEL/');

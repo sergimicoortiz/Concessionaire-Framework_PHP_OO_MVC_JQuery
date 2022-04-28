@@ -26,4 +26,14 @@ class login_model
     {
         return $this->bll->validate_user_BLL($args);
     } //end validate_user
+
+    public function set_user_enable($args)
+    {
+        return $this->bll->set_user_enable_BLL($args);
+    } //end set_user_enable
+
+    public function validate_email_user($args)
+    {
+        return $this->bll->validate_email_user_BLL($args);
+    } //end validate_email_user
 }//class

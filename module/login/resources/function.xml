@@ -12,4 +12,12 @@
         <name>validate_user</name>
         <uri>validate_user</uri>
     </function>
+    <function>
+        <name>set_user_enable</name>
+        <uri>set_user_enable</uri>
+    </function>
+    <function>
+        <name>validate_email_user</name>
+        <uri>validate_email_user</uri>
+    </function>
 </functions>

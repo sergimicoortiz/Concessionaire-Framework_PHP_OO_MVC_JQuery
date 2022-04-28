@@ -42,4 +42,30 @@ class login_bll
         return $this->dao->validate_user($this->db, $args[0], $args[1]);
     } //end validate_user_BLL
 
+    public function set_user_enable_BLL($args)
+    {
+        switch ($args[0]) {
+            case TRUE:
+                return $this->dao->enable_user($this->db, $args[1]);
+                break;
+            case FALSE:
+                return $this->dao->disable_user($this->db, $args[1]);
+                break;
+            default:
+                return $this->dao->disable_user($this->db, $args[1]);
+                break;
+        } //end swich
+    } //end set_user_enable_BLL
+
+    public function validate_email_user_BLL($args)
+    {
+        $user_id = $this->dao->get_user_from_token($this->db, $args[0]);
+
+        if (count($user_id) == 1) {
+            return  $this->dao->enable_user($this->db, $user_id[0]['id']);
+        } else {
+            return false;
+        } //end else if
+
+    } //end validate_email_user_BLL
 }//class

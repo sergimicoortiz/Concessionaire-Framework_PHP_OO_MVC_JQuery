@@ -28,4 +28,23 @@ class login_dao
         return $db->listar($ejecutar);
     } //end validate_user
 
+    public function enable_user($db, $id)
+    {
+        $sql = "UPDATE user SET active = TRUE WHERE id = '" . $id . "';";
+        return $db->ejecutar($sql);
+    } //end enable_user
+
+    public function disable_user($db, $id)
+    {
+        $sql = "UPDATE user SET active = FALSE WHERE id = '" . $id . "';";
+        return $db->ejecutar($sql);
+    } //end disable_user
+
+    public function get_user_from_token($db, $token)
+    {
+        $sql = "SELECT id FROM user WHERE token_email = '" . $token . "' AND active = FALSE;";
+        $ejecutar = $db->ejecutar($sql);
+        return $db->listar($ejecutar);
+    } //end get_user_from_token
+
 }//class

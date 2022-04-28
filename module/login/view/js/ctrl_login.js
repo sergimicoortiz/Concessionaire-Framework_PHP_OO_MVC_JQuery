@@ -85,8 +85,11 @@ function insert_user(data) {
     ajaxPromise(friendlyURL('?page=login&op=insert_user'), 'POST', 'JSON', data)
         .then(function (data) {
             if (data == true) {
-                var callback = friendlyURL('?module=home&op=view');
-                window.location.href = callback;
+                toastr.success('You will recive an email to validate your acount');
+                setTimeout(function () {
+                    var callback = friendlyURL('?module=home&op=view');
+                    window.location.href = callback;
+                }, 6000);//end timeout
             } else {
                 var callback = friendlyURL('?module=error&op=view&param=503&param2=login_insert_user_error_data');
                 window.location.href = callback;
@@ -99,7 +102,25 @@ function insert_user(data) {
 }//end insert_user
 
 function verify_user() {
-    console.log('verify');
+    const token = window.location.pathname.split('/')[5];
+    ajaxPromise(friendlyURL('?page=login&op=validate_email_user'), 'POST', 'JSON', { 'token': token })
+        .then(function (data) {
+            //console.log(data);
+            if (data) {
+                $('#login_div').html('<h1>Account verifyed, you will be redirected to the login page.</h1><br/>');
+                setTimeout(function () {
+                    callback = friendlyURL('?module=login&op=view');
+                    window.location.href = callback;
+                }, 4500);//end timeout
+            } else {
+                var callback = friendlyURL('?module=error&op=view&param=503&param2=login_validate_email_error_ajax');
+                window.location.href = callback;
+            }//end else if
+        })
+        .catch(function () {
+            var callback = friendlyURL('?module=error&op=view&param=503&param2=login_validate_email_error_ajax');
+            window.location.href = callback;
+        })//end ajaxpromise
 }//end verify_user
 
 function clicks_register() {

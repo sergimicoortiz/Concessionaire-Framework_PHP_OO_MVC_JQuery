@@ -16,4 +16,14 @@ class controller_login
     {
         echo json_encode(common::load_model('login_model', 'validate_user', [$_POST['username'], $_POST['email']]));
     } //end validate_user
+
+    function set_user_enable()
+    {
+        echo json_encode(common::load_model('login_model', 'set_user_enable', [$_POST['estado'], $_POST['id']]));
+    } //end set_user_enable
+
+    function validate_email_user()
+    {
+        echo json_encode(common::load_model('login_model', 'validate_email_user', [$_POST['token']]));
+    } //end validate_email_user
 }//class

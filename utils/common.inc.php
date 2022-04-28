@@ -63,4 +63,12 @@ class common
         } // end_else
         return SITE_PATH . $link;
     } // end friendlyURL
+
+    public static function generate_token_secure($longitud = 20)
+    {
+        if ($longitud < 4) {
+            $longitud = 4;
+        }
+        return bin2hex(openssl_random_pseudo_bytes(($longitud - ($longitud % 2)) / 2));
+    } //end generate_token_secure
 }//class

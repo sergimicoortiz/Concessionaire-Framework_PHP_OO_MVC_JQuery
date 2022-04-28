@@ -16,4 +16,14 @@ class login_model
         }
         return self::$_instance;
     }
+
+    public function insert_user($args)
+    {
+        return $this->bll->insert_user_BLL($args);
+    } //end insert_user
+
+    public function validate_user($args)
+    {
+        return $this->bll->validate_user_BLL($args);
+    } //end validate_user
 }//class

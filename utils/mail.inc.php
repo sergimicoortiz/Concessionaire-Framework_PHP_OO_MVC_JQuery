@@ -36,4 +36,34 @@ class mail
         $response->success();
         return $response->getData();
     } //end send email
+
+    public static function verify_user($data)
+    {
+
+        $email['from_email'] = 'sergimicoortiz@gmail.com';
+        $email['from_name'] = 'Sergi\'s Cars';
+        $email['to_name'] = $data['to_name'];
+        $email['to_email'] = $data['to_email'];
+        $email['subject'] = 'Verify your account';
+        $email['text'] = null;
+        $href = SITE_PATH . "login/view/verify/" . $data['token'];
+        $email['html'] = '<p>To verify your account you need to click this ' . $href . '</p>';
+        $email['custom_id'] = 'Verify';
+        return self::send_email($email);
+    } //end verify_user
+
+    public static function recover_password($data)
+    {
+
+        $email['from_email'] = 'sergimicoortiz@gmail.com';
+        $email['from_name'] = 'Sergi\'s Cars';
+        $email['to_name'] = $data['to_name'];
+        $email['to_email'] = $data['to_email'];
+        $email['subject'] = 'Verify your account';
+        $email['text'] = null;
+        $href = SITE_PATH . "login/view/recover/" . $data['token'];
+        $email['html'] = '<p>To change your password you need to click this <a href="' . $href . '">LINK</a></p>';
+        $email['custom_id'] = 'Verify';
+        return self::send_email($email);
+    } //end recover_password
 }//class

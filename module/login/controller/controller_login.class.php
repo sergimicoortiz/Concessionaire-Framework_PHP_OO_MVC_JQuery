@@ -7,8 +7,13 @@ class controller_login
         common::load_view('top_page_login.php', LOGIN_VIEW_PATH . "login.html");
     } //end view
 
-    function view_register()
+    function insert_user()
     {
-        common::load_view('top_page_login.php', LOGIN_VIEW_PATH . "register.html");
-    } //end vire_register
+        echo json_encode(common::load_model('login_model', 'insert_user', [$_POST['username'], $_POST['email'], $_POST['password']]));
+    } //end insert_user
+
+    function validate_user()
+    {
+        echo json_encode(common::load_model('login_model', 'validate_user', [$_POST['username'], $_POST['email']]));
+    } //end validate_user
 }//class

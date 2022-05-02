@@ -12,12 +12,24 @@
         <name>validate_user</name>
         <uri>validate_user</uri>
     </function>
-    <function>
+    <!-- <function>
         <name>set_user_enable</name>
         <uri>set_user_enable</uri>
-    </function>
+    </function> -->
     <function>
         <name>validate_email_user</name>
         <uri>validate_email_user</uri>
+    </function>
+    <function>
+        <name>login</name>
+        <uri>login</uri>
+    </function>
+    <function>
+        <name>get_user_data</name>
+        <uri>get_user_data</uri>
+    </function>
+    <function>
+        <name>logout</name>
+        <uri>logout</uri>
     </function>
 </functions>

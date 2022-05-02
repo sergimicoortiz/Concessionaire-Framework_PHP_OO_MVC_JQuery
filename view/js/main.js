@@ -46,37 +46,38 @@ function friendlyURL(url) {
 
 function user_info_menu() {
     if (localStorage.getItem('token')) {
-        ajaxPromise('module/login/ctrl/ctrl_login.php?op=get_user_data', 'POST', 'JSON', { 'token': localStorage.getItem('token') })
+        ajaxPromise(friendlyURL('?page=login&op=get_user_data'), 'POST', 'JSON', { 'token': localStorage.getItem('token') })
             .then(function (data) {
+                //console.log(data);
                 if (data == 'error') {
-                    $('<a></a>').attr('href', 'index.php?module=login&op=list_login').attr('data-tr', 'login').appendTo('#user_info').html('Login');
+                    $('<a></a>').attr('href', friendlyURL('?page=login&op=view')).attr('data-tr', 'login').appendTo('#user_info').html('Login');
                 } else {
                     $('<img>').attr('src', data.avatar).appendTo('#user_info');
                     $('<span></span>').appendTo('#user_info').html(data.username);
                     $('<span></span>').appendTo('#user_info').attr('data-tr', 'logout').attr('id', 'btn-logout').html('Logout');
 
-                }//end else if
+                }//end else if 
             })
             .catch(function () {
                 console.log('user_info_catch');
-                $('<a></a>').attr('href', 'index.php?module=login&op=list_login').attr('data-tr', 'login').appendTo('#user_info').html('Login');
+                $('<a></a>').attr('href', friendlyURL('?page=login&op=view')).attr('data-tr', 'login').appendTo('#user_info').html('Login');
             })//end ajaxPromise
     } else {
-        $('<a></a>').attr('href', 'index.php?module=login&op=list_login').attr('data-tr', 'login').appendTo('#user_info').html('Login');
+        $('<a></a>').attr('href', friendlyURL('?page=login&op=view')).attr('data-tr', 'login').appendTo('#user_info').html('Login');
     }//end else if
 }//end user_ingo_menu
 
 function logout() {
-    ajaxPromise('module/login/ctrl/ctrl_login.php?op=logout', 'POST', 'JSON')
+    ajaxPromise(friendlyURL('?page=login&op=logout'), 'POST', 'JSON')
         .then(function (data) {
             if (data == 'ok') {
                 localStorage.removeItem('token');
-                var callback = 'index.php?moduke=home&op=list';
+                var callback = friendlyURL('?page=home&op=view');
                 window.location.href = callback;
             }//end if
         })
         .catch(function () {
-            var callback = 'index.php?module=error&op=503&desc=logout_error_ajax';
+            var callback = friendlyURL('?module=error&op=view&param=503&param2=logout_error_ajax');
             window.location.href = callback;
         })//end ajaxpromise
 }//end logout
@@ -92,7 +93,7 @@ function user_timeout() {
             }//end if
         })
         .catch(function () {
-            var callback = 'index.php?module=error&op=503&desc=user_timeout_error_ajax';
+            var callback = friendlyURL('?module=error&op=view&param=503&param2=user_timeout_error_ajax');
             window.location.href = callback;
         });//end ajaxptromise
 }//end user_timeout
@@ -108,7 +109,7 @@ function user_control() {
             }//end if
         })
         .catch(function () {
-            var callback = 'index.php?module=error&op=503&desc=user_control_error_ajax';
+            var callback = friendlyURL('?module=error&op=view&param=503&param2=user_control_error_ajax');
             window.location.href = callback;
         });//end ajaxptromise
 }//end user_control
@@ -123,7 +124,7 @@ function refresh_token_cookies() {
             }//end else if
         })
         .catch(function () {
-            var callback = 'index.php?module=error&op=503&desc=refresh_token_error_ajax';
+            var callback = friendlyURL('?module=error&op=view&param=503&param2=refresh_token_error_ajax');
             window.location.href = callback;
         })//end ajaxpromise
 }//end refresh_token
@@ -134,29 +135,28 @@ $(document).ready(function () {
         "preventDuplicates": true,
     };
 
-    /* $(document).on('click', '#btn-logout', function () {
+    $(document).on('click', '#btn-logout', function () {
         logout();
     })//end clickLogout
-
-    setInterval(function () {
-        if (!localStorage.getItem('time_interval')) {
-            localStorage.setItem('time_interval', 0);
-        }
-        const time = 5000 + parseInt(localStorage.getItem('time_interval'));
-        localStorage.setItem('time_interval', time);
-        if (localStorage.getItem('time_interval') >= 600000) { //600000 default
-            localStorage.setItem('time_interval', 0);
-            if (localStorage.getItem('token')) {
-                user_timeout();
-                refresh_token_cookies();
+    /* 
+        setInterval(function () {
+            if (!localStorage.getItem('time_interval')) {
+                localStorage.setItem('time_interval', 0);
             }
+            const time = 5000 + parseInt(localStorage.getItem('time_interval'));
+            localStorage.setItem('time_interval', time);
+            if (localStorage.getItem('time_interval') >= 600000) { //600000 default
+                localStorage.setItem('time_interval', 0);
+                if (localStorage.getItem('token')) {
+                    user_timeout();
+                    refresh_token_cookies();
+                }
+            }
+        }, 5000)
+    
+        if (localStorage.getItem('token')) {
+            user_control();
         }
-    }, 5000)
-
-    if (localStorage.getItem('token')) {
-        user_control();
-    }
-
-    user_info_menu(); */
-    $('<a></a>').attr('href', friendlyURL('?page=login&op=view')).attr('data-tr', 'login').appendTo('#user_info').html('Login'); //TEMPORAL
+    */
+    user_info_menu();
 })//end ready

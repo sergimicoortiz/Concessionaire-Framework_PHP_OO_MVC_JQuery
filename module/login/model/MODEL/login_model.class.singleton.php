@@ -36,4 +36,20 @@ class login_model
     {
         return $this->bll->validate_email_user_BLL($args);
     } //end validate_email_user
+
+    public function login($args)
+    {
+        return $this->bll->login_BLL($args);
+    } //end login
+
+    public function get_user_data($args)
+    {
+        return $this->bll->get_user_data_BLL($args);
+    } //end get_user_data
+
+
+    public function logout()
+    {
+        return $this->bll->logout_BLl();
+    } //end logout
 }//class

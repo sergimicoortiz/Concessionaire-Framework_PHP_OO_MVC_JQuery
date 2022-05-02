@@ -47,4 +47,18 @@ class login_dao
         return $db->listar($ejecutar);
     } //end get_user_from_token
 
+    public function get_user_password($db, $username)
+    {
+        $sql = "SELECT password FROM user WHERE username = '" . $username . "' AND active = TRUE;";
+        $ejecutar = $db->ejecutar($sql);
+        return $db->listar($ejecutar);
+    } //end get_user_password
+
+    public function get_user_data($db, $username)
+    {
+        $sql = "SELECT username, email, type, avatar FROM user WHERE active = TRUE AND username = '" . $username . "';";
+        $ejecutar = $db->ejecutar($sql);
+        return $db->listar($ejecutar);
+    } //end get_user_data
+
 }//class

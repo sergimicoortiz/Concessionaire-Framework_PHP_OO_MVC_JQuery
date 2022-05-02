@@ -152,7 +152,7 @@ CREATE TABLE `error` (
   `error_type` int DEFAULT NULL,
   `error_description` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`error_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=560 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=562 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,7 +161,7 @@ CREATE TABLE `error` (
 
 LOCK TABLES `error` WRITE;
 /*!40000 ALTER TABLE `error` DISABLE KEYS */;
-INSERT INTO `error` VALUES (502,'2022-04-12 21:10:38',404,'desc test'),(503,'2022-04-12 21:10:59',404,'desc test'),(504,'2022-04-12 21:11:05',404,'desc test'),(505,'2022-04-12 21:15:55',503,''),(506,'2022-04-12 21:16:02',503,''),(507,'2022-04-12 21:16:10',503,'send_email_ajax_error'),(508,'2022-04-12 21:16:44',503,'send_email_ajax_error'),(509,'2022-04-12 21:21:42',503,'send_email_ajax_error'),(510,'2022-04-12 21:21:48',404,'test'),(511,'2022-04-13 14:32:08',404,''),(512,'2022-04-13 14:32:41',404,''),(513,'2022-04-13 14:32:42',404,''),(514,'2022-04-13 14:33:05',404,''),(515,'2022-04-13 14:54:26',503,'slide_read_error_ajax'),(516,'2022-04-14 12:32:25',503,'category_read_error_ajax'),(517,'2022-04-14 13:07:27',503,'shop_list_error_ajax'),(518,'2022-04-14 13:39:11',503,'shop_list_error_ajax'),(519,'2022-04-14 13:39:16',503,'shop_list_error_ajax'),(520,'2022-04-14 13:52:48',503,'shop_pagination_error_ajax'),(521,'2022-04-16 13:30:58',503,'shop_brand_error_ajax'),(522,'2022-04-16 13:30:58',503,'shop_pagination_error_ajax'),(523,'2022-04-16 13:52:11',503,'shop_list_error_ajax'),(524,'2022-04-16 13:52:38',503,'shop_list_error_ajax'),(525,'2022-04-16 14:46:59',503,'shop_details_error_ajax'),(526,'2022-04-16 14:47:31',503,'shop_details_error_ajax'),(527,'2022-04-16 14:50:58',503,'shop_details_error_ajax'),(528,'2022-04-16 14:51:11',503,'shop_details_error_ajax'),(529,'2022-04-16 14:51:18',503,'shop_details_error_ajax'),(530,'2022-04-16 14:51:49',503,'shop_details_error_ajax'),(531,'2022-04-16 14:53:14',503,'shop_details_error_ajax'),(532,'2022-04-16 14:53:40',503,'shop_details_error_ajax'),(533,'2022-04-16 14:53:51',503,'shop_details_error_ajax'),(534,'2022-04-16 14:53:59',503,'shop_details_error_ajax'),(535,'2022-04-16 14:58:29',503,'shop_details_error_ajax'),(536,'2022-04-16 14:58:49',503,'shop_details_error_ajax'),(537,'2022-04-16 14:59:10',503,'shop_details_error_ajax'),(538,'2022-04-19 13:55:06',503,'search_category_error_ajax'),(539,'2022-04-19 13:55:06',503,'search_category_error_ajax'),(540,'2022-04-19 13:55:06',503,'search_category_error_ajax'),(541,'2022-04-19 13:55:06',503,'search_category_error_ajax'),(542,'2022-04-19 13:55:06',503,'search_category_error_ajax'),(543,'2022-04-19 13:55:06',503,'search_category_error_ajax'),(544,'2022-04-19 13:55:06',503,'search_category_error_ajax'),(545,'2022-04-19 13:55:06',503,'search_category_error_ajax'),(546,'2022-04-19 13:55:06',503,'search_category_error_ajax'),(547,'2022-04-19 13:55:07',503,'search_category_error_ajax'),(548,'2022-04-19 13:55:07',503,'search_category_error_ajax'),(549,'2022-04-19 13:55:07',503,'search_category_error_ajax'),(550,'2022-04-19 13:55:07',503,'search_category_error_ajax'),(551,'2022-04-19 13:55:07',503,'search_category_error_ajax'),(552,'2022-04-19 13:55:07',503,'search_category_error_ajax'),(553,'2022-04-19 13:55:07',503,'search_category_error_ajax'),(554,'2022-04-19 13:55:07',503,'search_category_error_ajax'),(555,'2022-04-19 13:55:07',503,'search_category_error_ajax'),(556,'2022-04-19 13:55:08',503,'search_category_error_ajax'),(557,'2022-04-19 13:55:49',503,'search_category_error_ajax'),(558,'2022-04-26 16:00:51',503,'shop_pagination_error_ajax'),(559,'2022-04-26 16:01:21',503,'shop_pagination_error_ajax');
+INSERT INTO `error` VALUES (502,'2022-04-12 21:10:38',404,'desc test'),(503,'2022-04-12 21:10:59',404,'desc test'),(504,'2022-04-12 21:11:05',404,'desc test'),(505,'2022-04-12 21:15:55',503,''),(506,'2022-04-12 21:16:02',503,''),(507,'2022-04-12 21:16:10',503,'send_email_ajax_error'),(508,'2022-04-12 21:16:44',503,'send_email_ajax_error'),(509,'2022-04-12 21:21:42',503,'send_email_ajax_error'),(510,'2022-04-12 21:21:48',404,'test'),(511,'2022-04-13 14:32:08',404,''),(512,'2022-04-13 14:32:41',404,''),(513,'2022-04-13 14:32:42',404,''),(514,'2022-04-13 14:33:05',404,''),(515,'2022-04-13 14:54:26',503,'slide_read_error_ajax'),(516,'2022-04-14 12:32:25',503,'category_read_error_ajax'),(517,'2022-04-14 13:07:27',503,'shop_list_error_ajax'),(518,'2022-04-14 13:39:11',503,'shop_list_error_ajax'),(519,'2022-04-14 13:39:16',503,'shop_list_error_ajax'),(520,'2022-04-14 13:52:48',503,'shop_pagination_error_ajax'),(521,'2022-04-16 13:30:58',503,'shop_brand_error_ajax'),(522,'2022-04-16 13:30:58',503,'shop_pagination_error_ajax'),(523,'2022-04-16 13:52:11',503,'shop_list_error_ajax'),(524,'2022-04-16 13:52:38',503,'shop_list_error_ajax'),(525,'2022-04-16 14:46:59',503,'shop_details_error_ajax'),(526,'2022-04-16 14:47:31',503,'shop_details_error_ajax'),(527,'2022-04-16 14:50:58',503,'shop_details_error_ajax'),(528,'2022-04-16 14:51:11',503,'shop_details_error_ajax'),(529,'2022-04-16 14:51:18',503,'shop_details_error_ajax'),(530,'2022-04-16 14:51:49',503,'shop_details_error_ajax'),(531,'2022-04-16 14:53:14',503,'shop_details_error_ajax'),(532,'2022-04-16 14:53:40',503,'shop_details_error_ajax'),(533,'2022-04-16 14:53:51',503,'shop_details_error_ajax'),(534,'2022-04-16 14:53:59',503,'shop_details_error_ajax'),(535,'2022-04-16 14:58:29',503,'shop_details_error_ajax'),(536,'2022-04-16 14:58:49',503,'shop_details_error_ajax'),(537,'2022-04-16 14:59:10',503,'shop_details_error_ajax'),(538,'2022-04-19 13:55:06',503,'search_category_error_ajax'),(539,'2022-04-19 13:55:06',503,'search_category_error_ajax'),(540,'2022-04-19 13:55:06',503,'search_category_error_ajax'),(541,'2022-04-19 13:55:06',503,'search_category_error_ajax'),(542,'2022-04-19 13:55:06',503,'search_category_error_ajax'),(543,'2022-04-19 13:55:06',503,'search_category_error_ajax'),(544,'2022-04-19 13:55:06',503,'search_category_error_ajax'),(545,'2022-04-19 13:55:06',503,'search_category_error_ajax'),(546,'2022-04-19 13:55:06',503,'search_category_error_ajax'),(547,'2022-04-19 13:55:07',503,'search_category_error_ajax'),(548,'2022-04-19 13:55:07',503,'search_category_error_ajax'),(549,'2022-04-19 13:55:07',503,'search_category_error_ajax'),(550,'2022-04-19 13:55:07',503,'search_category_error_ajax'),(551,'2022-04-19 13:55:07',503,'search_category_error_ajax'),(552,'2022-04-19 13:55:07',503,'search_category_error_ajax'),(553,'2022-04-19 13:55:07',503,'search_category_error_ajax'),(554,'2022-04-19 13:55:07',503,'search_category_error_ajax'),(555,'2022-04-19 13:55:07',503,'search_category_error_ajax'),(556,'2022-04-19 13:55:08',503,'search_category_error_ajax'),(557,'2022-04-19 13:55:49',503,'search_category_error_ajax'),(558,'2022-04-26 16:00:51',503,'shop_pagination_error_ajax'),(559,'2022-04-26 16:01:21',503,'shop_pagination_error_ajax'),(560,'2022-05-02 16:25:41',503,'logout_error_ajax'),(561,'2022-05-02 16:26:11',503,'logout_error_ajax');
 /*!40000 ALTER TABLE `error` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -262,7 +262,9 @@ CREATE TABLE `user` (
   `password` char(60) DEFAULT NULL,
   `type` char(15) DEFAULT NULL,
   `avatar` char(80) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uniqemail` (`email`),
+  UNIQUE KEY `uniqeuser` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -272,7 +274,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('id1',1,'token1','username1','email1','pass1','admin','avatar1');
+INSERT INTO `user` VALUES ('f3246ce0da',1,'ac08ed6e64082f32949d','test','sergimicoortiz@gmail.com','$2y$12$m40x0w93dXb.LKy4w8340OcqwHI6633b7SqZjnpBvcnmY7d0OwVxO','user','https://i.pravatar.cc/150?u=5fb3fb7f2792e1276bbddd4c29834a45');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -316,4 +318,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-28 15:53:52
+-- Dump completed on 2022-05-02 16:31:55

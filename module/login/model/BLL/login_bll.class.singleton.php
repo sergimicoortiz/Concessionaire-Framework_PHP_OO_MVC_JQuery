@@ -25,8 +25,8 @@ class login_bll
         $token_email = common::generate_token_secure();
         $username = $args[0];
         $email = $args[1];
-        $password = password_hash(strval($args[3]), PASSWORD_DEFAULT, ['cost' => 12]);
-        $avatar = 'https://i.pravatar.cc/150?u=' . md5(trim($args[2]));
+        $password = password_hash(strval($args[2]), PASSWORD_DEFAULT, ['cost' => 12]);
+        $avatar = 'https://i.pravatar.cc/150?u=' . md5(trim($args[1]));
         $data_email['to_name'] = $username;
         $data_email['to_email'] = $email;
         $data_email['token'] = $token_email;
@@ -68,4 +68,37 @@ class login_bll
         } //end else if
 
     } //end validate_email_user_BLL
+
+    public function login_BLL($args)
+    {
+        $pass_db = $this->dao->get_user_password($this->db, $args[0])[0]['password'];
+        $pass_ok = password_verify(strval($args[1]), $pass_db);
+        if ($pass_ok) {
+            session_start();
+            $_SESSION['time'] = time();
+            $_SESSION['user'] = $args[0];
+            return middleware::encode_jwt($args[0]);
+        } else {
+            return 'error';
+        } //end else if
+    } //end login_BLL
+
+    public function get_user_data_BLL($args)
+    {
+        $username = middleware::decode_jwt($args[0]);
+        if ($username['name']) {
+            return $this->dao->get_user_data($this->db, $username['name'])[0];
+        } else {
+            return 'error';
+        } //end else if
+    } //end get_user_data_BLL
+
+    public function logout_BLl()
+    {
+        session_start();
+        unset($_SESSION['user']);
+        unset($_SESSION['time']);
+        session_destroy();
+        return 'ok';
+    } //end logout_BLl
 }//class

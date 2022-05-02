@@ -41,4 +41,19 @@ class controller_login
     {
         echo json_encode(common::load_model('login_model', 'logout'));
     } //end logout
+
+    function user_control()
+    {
+        echo json_encode(common::load_model('login_model', 'user_control', [$_POST['token']]));
+    } //end user_control
+
+    function refresh_token_cookies()
+    {
+        echo json_encode(common::load_model('login_model', 'refresh_token_cookies', [$_POST['token']]));
+    } //end refresh_token_cookies
+
+    function user_timeout()
+    {
+        echo json_encode(common::load_model('login_model', 'user_timeout'));
+    } //end user_timeout
 }//class

@@ -1,5 +1,8 @@
 <?php
-
+session_start();
+if (isset($_SESSION["time"])) {
+    $_SESSION["time"] = time();
+}
 class controller_search
 {
     function get_categories()

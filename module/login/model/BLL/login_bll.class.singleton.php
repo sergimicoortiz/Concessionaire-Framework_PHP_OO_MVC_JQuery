@@ -101,4 +101,37 @@ class login_bll
         session_destroy();
         return 'ok';
     } //end logout_BLl
+
+    public function user_control_BLl($args)
+    {
+        $jwtjson = middleware::decode_jwt($args[0]);
+        $user = $jwtjson['name'];
+        $exp = $jwtjson['exp'];
+        session_start();
+        if (($_SESSION['user'] == $user) && ($exp >= time())) {
+            return 'ok';
+        } else {
+            return 'error';
+        } //end else if
+    } //end user_control_BLl
+
+    public function refresh_token_cookies_BLL($args)
+    {
+        $username = middleware::decode_jwt($args[0])['name'];
+        if ($username) {
+            return middleware::encode_jwt($username);
+        } else {
+            return 'error';
+        } //end else if
+    } //end refresh_token_cookies_BLL
+
+    public function user_timeout_BLL()
+    {
+        session_start();
+        if ((isset($_SESSION['time'])) && ((time() - $_SESSION['time']) <= 900)) { //900 default
+            return 'ok';
+        } else {
+            return 'error';
+        } //end else if
+    } //end user_timeout_BLL
 }//class

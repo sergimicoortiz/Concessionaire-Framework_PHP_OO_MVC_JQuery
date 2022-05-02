@@ -32,4 +32,16 @@
         <name>logout</name>
         <uri>logout</uri>
     </function>
+    <function>
+        <name>user_control</name>
+        <uri>user_control</uri>
+    </function>
+    <function>
+        <name>refresh_token_cookies</name>
+        <uri>refresh_token_cookies</uri>
+    </function>
+    <function>
+        <name>user_timeout</name>
+        <uri>user_timeout</uri>
+    </function>
 </functions>

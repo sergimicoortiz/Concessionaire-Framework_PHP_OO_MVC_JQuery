@@ -1,5 +1,8 @@
 <?php
-
+session_start();
+if (isset($_SESSION["time"])) {
+    $_SESSION["time"] = time();
+}
 class controller_contact
 {
     function view()
@@ -18,7 +21,7 @@ class controller_contact
         $email['html'] = '<h1>' . $_POST["matter"] . '</h1><h3>FROM: ' . $_POST["email"] . '(' . $_POST["name"] . ')</h3><h3>' . $_POST["message"] . '</h3>';
         $email['custom_id'] = 'contact';
         $result = mail::send_email($email);
-        
+
         if ($result['Messages'][0]['Status'] === 'success') {
             echo json_encode('ok');
             exit;
@@ -26,5 +29,5 @@ class controller_contact
             echo json_encode('error');
             exit;
         } //end if
-    }//end send_email_contact
+    } //end send_email_contact
 }//class

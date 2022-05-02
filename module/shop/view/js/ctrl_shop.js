@@ -53,29 +53,29 @@ function ajaxForSearch(url, f_data = undefined) {
 }//end ajaxForSearch
 
 function loadCars(offset = 0, limit = 8) {
-    /* localStorage.setItem('actual_page', "car_list");
-    GetQuerystring();
-    const urlsearch = window.location.search;
-    const params = new URLSearchParams(urlsearch);
-    var url_params = new Array;
-    url_params.push(params.get('c.price'));
-    url_params.push(params.get('b.brand_name'));
-    url_params.push(params.get('cat.category_name'));
-    url_params.push(params.get('f.fuel_type_name'));
-    url_params.push(params.get('c.city'));
-    url_params.push(params.get('c.view_count'));
-
-    url_params.forEach(param => {
-        if (param === null) {
-            SetQuerystring();
-        }
-    });
-
-    if (localStorage.getItem('token')) {
-        get_user_likes();
-    } else {
-        localStorage.removeItem('user_likes');
-    }//end if */
+    localStorage.setItem('actual_page', "car_list");
+    /*  GetQuerystring();
+     const urlsearch = window.location.search;
+     const params = new URLSearchParams(urlsearch);
+     var url_params = new Array;
+     url_params.push(params.get('c.price'));
+     url_params.push(params.get('b.brand_name'));
+     url_params.push(params.get('cat.category_name'));
+     url_params.push(params.get('f.fuel_type_name'));
+     url_params.push(params.get('c.city'));
+     url_params.push(params.get('c.view_count'));
+ 
+     url_params.forEach(param => {
+         if (param === null) {
+             SetQuerystring();
+         }
+     });
+ 
+     if (localStorage.getItem('token')) {
+         get_user_likes();
+     } else {
+         localStorage.removeItem('user_likes');
+     }//end if */
 
     var option = 'all';
     var filters = JSON.parse(localStorage.getItem('filters'));

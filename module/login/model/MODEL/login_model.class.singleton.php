@@ -52,4 +52,20 @@ class login_model
     {
         return $this->bll->logout_BLl();
     } //end logout
+
+    public function user_control($args)
+    {
+        return $this->bll->user_control_BLL($args);
+    } //end user_control
+
+    public function refresh_token_cookies($args)
+    {
+        return $this->bll->refresh_token_cookies_BLL($args);
+    } //end refresh_token_cookies
+
+    public function user_timeout()
+    {
+        return $this->bll->user_timeout_BLL();
+    } //end user_timeout
+
 }//class

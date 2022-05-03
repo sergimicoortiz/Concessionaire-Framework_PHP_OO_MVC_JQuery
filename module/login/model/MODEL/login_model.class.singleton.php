@@ -68,4 +68,13 @@ class login_model
         return $this->bll->user_timeout_BLL();
     } //end user_timeout
 
+    public function send_email_recover($args)
+    {
+        return $this->bll->send_email_recover_BLL($args);
+    } //end send_email_recover
+
+    public function update_password_recover($args)
+    {
+        return $this->bll->update_password_recover_BLL($args);
+    } //end update_password_recover
 }//class

@@ -134,4 +134,44 @@ class login_bll
             return 'error';
         } //end else if
     } //end user_timeout_BLL
+
+    public function send_email_recover_BLL($args)
+    {
+        $user = $this->dao->get_user_from_email($this->db, $args[0]);
+
+        if (count($user) == 1) {
+            $user_id = $user[0]['id'];
+            $username = $user[0]['username'];
+            $new_token = common::generate_token_secure();
+            $email_data['to_email'] = $args[0];
+            $email_data['to_name'] = $username;
+            $email_data['token'] = $new_token;
+            $disable_user = $this->dao->disable_user($this->db, $user_id);
+            if ($disable_user) {
+                $update_token = $this->dao->update_user_email_token($this->db, $username, $new_token);
+                if ($update_token) {
+                    $email_sended =  mail::recover_password($email_data);
+                    if ($email_sended['Messages'][0]['Status'] == 'success') {
+                        return 'ok';
+                    } //end if
+                } //end if
+            } //end if
+        } //end if
+        return 'error';
+    } // end recover_password_BLL
+
+    public function update_password_recover_BLL($args)
+    {
+        $user_id = $this->dao->get_user_from_token($this->db, $args[0])[0]['id'];
+        $new_password = password_hash(strval($args[1]), PASSWORD_DEFAULT, ['cost' => 12]);
+        $update_password = $this->dao->update_user_password($this->db, $user_id, $new_password);
+        if ($update_password) {
+            $enable_user = $this->dao->enable_user($this->db, $user_id);
+            if ($enable_user) {
+                return 'ok';
+            } //end if
+        } //end if
+        return 'error';
+    } //end update_password_recover_BLL
+
 }//class

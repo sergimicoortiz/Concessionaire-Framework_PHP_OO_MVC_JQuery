@@ -61,4 +61,23 @@ class login_dao
         return $db->listar($ejecutar);
     } //end get_user_data
 
+    public function update_user_email_token($db, $username, $token)
+    {
+        $sql = "UPDATE user SET token_email = '" . $token . "' WHERE username = '" . $username . "' AND active = FALSE;";
+        return  $db->ejecutar($sql);
+    } //end update_user_email_token
+
+    public function update_user_password($db, $id, $password)
+    {
+        $sql = "UPDATE user SET password = '" . $password . "' WHERE id = '" . $id . "' AND active = FALSE;";
+        return  $db->ejecutar($sql);
+    } //end update_user_password
+
+    public function get_user_from_email($db, $email)
+    {
+        $sql = "SELECT username, id FROM user WHERE email ='" . $email . "';";
+        $ejecutar = $db->ejecutar($sql);
+        return $db->listar($ejecutar);
+    } //end get_user_from_email
+
 }//class

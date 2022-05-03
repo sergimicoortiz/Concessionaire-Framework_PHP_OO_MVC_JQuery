@@ -62,7 +62,7 @@ class mail
         $email['subject'] = 'Verify your account';
         $email['text'] = null;
         $href = SITE_PATH . "login/view/recover/" . $data['token'];
-        $email['html'] = '<p>To change your password you need to click this <a href="' . $href . '">LINK</a></p>';
+        $email['html'] = '<p>To change your password you need to click this ' . $href . '</p>';
         $email['custom_id'] = 'Verify';
         return self::send_email($email);
     } //end recover_password

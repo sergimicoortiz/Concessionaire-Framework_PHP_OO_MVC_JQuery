@@ -44,4 +44,12 @@
         <name>user_timeout</name>
         <uri>user_timeout</uri>
     </function>
+    <function>
+        <name>send_email_recover</name>
+        <uri>send_email_recover</uri>
+    </function>
+    <function>
+        <name>update_password_recover</name>
+        <uri>update_password_recover</uri>
+    </function>
 </functions>

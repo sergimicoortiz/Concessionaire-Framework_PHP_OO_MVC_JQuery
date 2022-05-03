@@ -56,4 +56,14 @@ class controller_login
     {
         echo json_encode(common::load_model('login_model', 'user_timeout'));
     } //end user_timeout
+
+    function send_email_recover()
+    {
+        echo json_encode(common::load_model('login_model', 'send_email_recover', [$_POST['email']]));
+    } //end send_email_recover
+
+    function update_password_recover()
+    {
+        echo json_encode(common::load_model('login_model', 'update_password_recover', [$_POST['token'], $_POST['password']]));
+    } //end send_email_recover
 }//class

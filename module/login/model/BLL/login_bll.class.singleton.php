@@ -162,13 +162,16 @@ class login_bll
 
     public function update_password_recover_BLL($args)
     {
-        $user_id = $this->dao->get_user_from_token($this->db, $args[0])[0]['id'];
-        $new_password = password_hash(strval($args[1]), PASSWORD_DEFAULT, ['cost' => 12]);
-        $update_password = $this->dao->update_user_password($this->db, $user_id, $new_password);
-        if ($update_password) {
-            $enable_user = $this->dao->enable_user($this->db, $user_id);
-            if ($enable_user) {
-                return 'ok';
+        $user_id = $this->dao->get_user_from_token($this->db, $args[0]);
+        if (count($user_id) == 1) {
+            $user_id = $user_id[0]['id'];
+            $new_password = password_hash(strval($args[1]), PASSWORD_DEFAULT, ['cost' => 12]);
+            $update_password = $this->dao->update_user_password($this->db, $user_id, $new_password);
+            if ($update_password) {
+                $enable_user = $this->dao->enable_user($this->db, $user_id);
+                if ($enable_user) {
+                    return 'ok';
+                } //end if
             } //end if
         } //end if
         return 'error';

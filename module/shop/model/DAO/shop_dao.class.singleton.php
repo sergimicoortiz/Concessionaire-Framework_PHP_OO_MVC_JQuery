@@ -84,4 +84,23 @@ class shop_dao
         $ejecutar = $db->ejecutar($sql);
         return $db->listar($ejecutar);
     } //end details_car_img
+
+    public function add_view_car($db, $id)
+    {
+        $sql = "UPDATE `car` SET `view_count`= view_count + 1 WHERE `car_id` = " . $id . ";";
+        return $db->ejecutar($sql);
+    } //end add_view_car
+
+    public function get_user_likes($db, $username)
+    {
+        $sql = "SELECT car_like FROM likes WHERE id_user = (SELECT id FROM user WHERE username = '" . $username . "');";
+        $ejecutar = $db->ejecutar($sql);
+        return $db->listar($ejecutar);
+    } //end get_user_likes
+
+    public function user_like($db, $username, $car_id)
+    {
+        $sql = "CALL likes((SELECT id FROM user WHERE username = '" . $username . "'), " . $car_id . ");";
+        return $db->ejecutar($sql);
+    } //end user_like
 }//class

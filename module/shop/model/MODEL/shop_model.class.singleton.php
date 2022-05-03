@@ -56,4 +56,14 @@ class shop_model
     {
         return $this->bll->details_car_BLL($args);
     } //end details_car
+
+    public function get_user_likes($args)
+    {
+        return $this->bll->get_user_likes_BLL($args);
+    } //end get_user_likes
+
+    public function user_like($args)
+    {
+        return $this->bll->user_like_BLL($args);
+    } //end user_like
 }//class

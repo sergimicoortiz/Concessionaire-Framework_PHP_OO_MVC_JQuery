@@ -36,4 +36,12 @@
         <name>details_car</name>
         <uri>details_car</uri>
     </function>
+    <function>
+        <name>get_user_likes</name>
+        <uri>get_user_likes</uri>
+    </function>
+    <function>
+        <name>user_like</name>
+        <uri>user_like</uri>
+    </function>
 </functions>

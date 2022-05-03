@@ -49,4 +49,14 @@ class controller_shop
     {
         echo json_encode(common::load_model('shop_model', 'details_car', [$_POST['id']]));
     } //end details_car
+
+    function get_user_likes()
+    {
+        echo json_encode(common::load_model('shop_model', 'get_user_likes', [$_POST['token']]));
+    } //end get_user_likes
+
+    function user_like()
+    {
+        echo json_encode(common::load_model('shop_model', 'user_like', [$_POST['token'], $_POST['car_id']]));
+    } //end user_like
 }//class

@@ -122,8 +122,35 @@ class shop_bll
 
     public function details_car_BLL($args)
     {
+        $add_view = $this->dao->add_view_car($this->db, $args[0]);
         $data['car'] = $this->dao->details_car($this->db, $args[0]);
         $data['img'] = $this->dao->details_car_img($this->db, $args[0]);
         return $data;
     } //end details_car_BLL
+
+    public function get_user_likes_BLL($args)
+    {
+        $username = middleware::decode_jwt($args[0])['name'];
+        if (($username != null) && ($username != "")) {
+            $likes_tmp = $this->dao->get_user_likes($this->db, $username);
+            $likes = [];
+            foreach ($likes_tmp as $l) {
+                array_push($likes, $l['car_like']);
+                return $likes;
+            } //end foreach
+        } else {
+            return 'error';
+        } //end else if
+    } //end get_user_likes
+
+    public function user_like_BLL($args)
+    {
+        $username = middleware::decode_jwt($args[0])['name'];
+        if ($username != null && $username != "") {
+            return $this->dao->user_like($this->db, $username, $args[1]);
+        } else {
+            return false;
+        } //end else if
+
+    } //end user_like
 }//class

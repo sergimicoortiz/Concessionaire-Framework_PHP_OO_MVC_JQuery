@@ -33,7 +33,7 @@ function ajaxForSearch(url, f_data = undefined) {
                     $('<p></p>').attr('class', 'upper').appendTo('#main_' + id).html('<b data-tr="view_count">View count</b>: ' + car['view_count']);
                     $('<p></p>').attr('class', 'upper').appendTo('#main_' + id).html('<b data-tr="extres">extres</b>: ' + extres);
                     $('<a></a>').attr('href', '#').attr('class', 'button').attr('id', id).attr('data-tr', 'See More').appendTo('#main_' + id).html('See More');
-                    //print_like(id);
+                    print_like(id);
                     if (cont_last == 3) {
                         $(last).addClass('last');
                         count_box++;
@@ -153,7 +153,7 @@ function shop_read(id) {
             var extres = formatter_extres.format(data['extres'].split(':').slice(0, -1));
 
             $('<div></div>').attr('id', 'detail_content').appendTo('#details');
-            //print_like(data['car_id'], '#detail_content');
+            print_like(data['car_id'], '#detail_content');
             $('<p></p>').appendTo('#detail_content').html('<span data-tr="brand_name">brand</span>: <span class="text-detail">' + data['brand_name'] + '</span>');
             $('<p></p>').appendTo('#detail_content').html('<span data-tr="model_name">model</span>: <span class="text-detail">' + data['model_name'] + '</span>');
             $('<p></p>').appendTo('#detail_content').html('<span data-tr="price">price</span>: <span class="text-detail">' + data['price'] + ' €</span>');
@@ -211,7 +211,7 @@ function add_related_cars(car, box_num) {
                         $('<p></p>').attr('class', 'upper').appendTo('#main_' + id).html('<b data-tr="view_count">View count</b>: ' + car_data['view_count']);
                         $('<p></p>').attr('class', 'upper').appendTo('#main_' + id).html('<b data-tr="extres">extres</b>: ' + extres);
                         $('<a></a>').attr('href', '#').attr('class', 'button').attr('id', id).attr('data-tr', 'See More').appendTo('#main_' + id).html('See More');
-                        //print_like(id);
+                        print_like(id);
                     }
                 });//end foreach
             }//end else
@@ -544,17 +544,19 @@ function load_pagination(limit = 8) {
 }//end load pagination
 
 function get_user_likes() {
-    ajaxPromise('module/shop/ctrl/ctrl_shop.php?op=get_user_likes', 'POST', 'JSON', { 'token': localStorage.getItem('token') })
+    ajaxPromise(friendlyURL('?page=shop&op=get_user_likes'), 'POST', 'JSON', { 'token': localStorage.getItem('token') })
         .then(function (data) {
+            console.log(data);
             if (data == 'error') {
-                var callback = 'index.php?module=error&op=503&desc=shop_get_user_likes_error_data';
+                var callback = friendlyURL('?module=error&op=view&param=503&param2=shop_get_user_likes_error_data');
                 window.location.href = callback;
             } else {
                 localStorage.setItem('user_likes', JSON.stringify(data));
-            }//end if
+            }//end else if
+
         })
         .catch(function () {
-            var callback = 'index.php?module=error&op=503&desc=shop_get_user_likes_error_ajax';
+            var callback = friendlyURL('?module=error&op=view&param=503&param2=shop_get_user_likes_error_ajax');
             window.location.href = callback;
         })//end ajaxpromise
 }//end get_user_likes
@@ -569,15 +571,16 @@ function print_like(id, append = '#main_' + id) {
 }//end print likes
 
 function user_like(id) {
-    ajaxPromise('module/shop/ctrl/ctrl_shop.php?op=user_like', 'POST', 'JSON', { 'id': id, 'token': localStorage.getItem('token') })
+    ajaxPromise(friendlyURL('?page=shop&op=user_like'), 'POST', 'JSON', { 'car_id': id, 'token': localStorage.getItem('token') })
         .then(function (data) {
-            if (data == 'error') {
-                var callback = 'index.php?module=error&op=503&desc=shop_user_like_error_data';
+            //console.log(data);
+            if (data == false) {
+                var callback = friendlyURL('?module=error&op=view&param=503&param2=shop_user_like_error_data');
                 window.location.href = callback;
             }//end if
         })
         .catch(function () {
-            var callback = 'index.php?module=error&op=503&desc=shop_user_like_error_ajax';
+            var callback = friendlyURL('?module=error&op=view&param=503&param2=shop_user_like_error_ajax');
             window.location.href = callback;
         })//end ajaxPromise
 }//end user_like
@@ -636,11 +639,11 @@ $(document).ready(function () {
     window.formatter_extres = new Intl.ListFormat(lang_formater, { style: 'long', type: 'conjunction' });
     const map = null;
 
-    /* if (localStorage.getItem('token')) {
+    if (localStorage.getItem('token')) {
         get_user_likes();
     } else {
         localStorage.removeItem('user_likes');
-    }//end if */
+    }//end if
 
     if (localStorage.getItem('details_id')) {
         shop_read(localStorage.getItem('details_id'))

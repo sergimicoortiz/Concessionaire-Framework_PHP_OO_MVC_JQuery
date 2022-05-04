@@ -546,7 +546,7 @@ function load_pagination(limit = 8) {
 function get_user_likes() {
     ajaxPromise(friendlyURL('?page=shop&op=get_user_likes'), 'POST', 'JSON', { 'token': localStorage.getItem('token') })
         .then(function (data) {
-            console.log(data);
+            //console.log(data);
             if (data == 'error') {
                 var callback = friendlyURL('?module=error&op=view&param=503&param2=shop_get_user_likes_error_data');
                 window.location.href = callback;

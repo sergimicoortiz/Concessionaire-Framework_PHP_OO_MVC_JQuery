@@ -177,4 +177,9 @@ class login_bll
         return 'error';
     } //end update_password_recover_BLL
 
+    public function social_singin_BLL($args)
+    {
+        return 'test social bll';
+    } //end social_singin_BLL
+
 }//class

@@ -72,6 +72,7 @@ function logout() {
         .then(function (data) {
             if (data == 'ok') {
                 localStorage.removeItem('token');
+                localStorage.removeItem('user_likes');
                 var callback = friendlyURL('?page=home&op=view');
                 window.location.href = callback;
             }//end if
@@ -86,12 +87,12 @@ function user_timeout() {
     ajaxPromise(friendlyURL('?page=login&op=user_timeout'), 'POST', 'JSON')
         .then(function (data) {
             console.log(data);
-            /*  if (data == 'error') {
-                 toastr.warning('Your session will be closed because of inactivity.');
-                 setTimeout(function () {
-                     logout();
-                 }, 1500);
-             }//end if */
+            if (data == 'error') {
+                toastr.warning('Your session will be closed because of inactivity.');
+                setTimeout(function () {
+                    logout();
+                }, 1500);
+            }//end if
         })
         .catch(function () {
             var callback = friendlyURL('?module=error&op=view&param=503&param2=user_timeout_error_ajax');

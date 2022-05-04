@@ -77,4 +77,9 @@ class login_model
     {
         return $this->bll->update_password_recover_BLL($args);
     } //end update_password_recover
+
+    public function social_singin($args)
+    {
+        return $this->bll->social_singin_BLL($args);
+    } //end social_singin_BLL
 }//class

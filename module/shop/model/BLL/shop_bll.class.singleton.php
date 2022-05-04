@@ -136,8 +136,8 @@ class shop_bll
             $likes = [];
             foreach ($likes_tmp as $l) {
                 array_push($likes, $l['car_like']);
-                return $likes;
             } //end foreach
+            return $likes;
         } else {
             return 'error';
         } //end else if

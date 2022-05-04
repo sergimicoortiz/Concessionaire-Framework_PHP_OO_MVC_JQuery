@@ -52,4 +52,8 @@
         <name>update_password_recover</name>
         <uri>update_password_recover</uri>
     </function>
+    <function>
+        <name>social_singin</name>
+        <uri>social_singin</uri>
+    </function>
 </functions>

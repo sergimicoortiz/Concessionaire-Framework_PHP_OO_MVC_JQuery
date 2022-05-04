@@ -66,4 +66,9 @@ class controller_login
     {
         echo json_encode(common::load_model('login_model', 'update_password_recover', [$_POST['token'], $_POST['password']]));
     } //end send_email_recover
+
+    function social_singin()
+    {
+        echo json_encode(common::load_model('login_model', 'social_singin', [$_POST['username'], $_POST['email'], $_POST['profile'], $_POST['user_id']]));
+    } //end social_singin
 }//class

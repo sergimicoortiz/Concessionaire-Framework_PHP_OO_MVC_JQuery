@@ -615,7 +615,7 @@ function clicks() {
                     localStorage.setItem('details_id', id);
                 }
                 localStorage.setItem('url_callback', window.location.href);
-                var callback = 'index.php?module=login&op=list_login';
+                var callback = friendlyURL('?page=login&op=view');
                 window.location.href = callback;
             }, 1500)
         }//end else if

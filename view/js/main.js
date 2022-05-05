@@ -86,7 +86,7 @@ function logout() {
 function user_timeout() {
     ajaxPromise(friendlyURL('?page=login&op=user_timeout'), 'POST', 'JSON')
         .then(function (data) {
-            console.log(data);
+            //console.log(data);
             if (data == 'error') {
                 toastr.warning('Your session will be closed because of inactivity.');
                 setTimeout(function () {

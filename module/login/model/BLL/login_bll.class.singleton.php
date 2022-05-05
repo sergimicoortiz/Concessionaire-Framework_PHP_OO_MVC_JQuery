@@ -137,7 +137,7 @@ class login_bll
 
     public function send_email_recover_BLL($args)
     {
-        $user = $this->dao->get_user_from_email($this->db, $args[0]);
+        $user = $this->dao->get_user_from_email_no_social($this->db, $args[0]);
 
         if (count($user) == 1) {
             $user_id = $user[0]['id'];
@@ -179,7 +179,31 @@ class login_bll
 
     public function social_singin_BLL($args)
     {
-        return 'test social bll';
+        $username = $args[0];
+        $email = $args[1];
+        $avatar = $args[2];
+        $user_id = $args[3];
+        $user_exist = $this->dao->validate_user($this->db, $username, $email)[0]['cont'];
+
+        if ($user_exist == 0) {
+            $insert = $this->dao->insert_user_social($this->db, $user_id, $username, $email, $avatar);
+            if ($insert == false) {
+                return 'error_insert';
+            } //end if
+        } //end if
+
+        $normal_user = true;
+        if (count($this->dao->get_user_from_email_no_social($this->db, $email)) == 0) {
+            $normal_user = false;
+        } //end if
+
+        if ($normal_user == false) {
+            session_start();
+            $_SESSION['time'] = time();
+            $_SESSION['user'] = $username;
+            return middleware::encode_jwt($username);
+        } //end if
+        return 'error';
     } //end social_singin_BLL
 
 }//class

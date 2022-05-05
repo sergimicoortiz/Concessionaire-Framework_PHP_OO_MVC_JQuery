@@ -298,8 +298,11 @@ function regex_recover_email() {
 function send_email_recover() {
     ajaxPromise(friendlyURL('?page=login&op=send_email_recover'), 'POST', 'JSON', { 'email': $('#email').val() })
         .then(function (data) {
-            //console.log(data);
-            toastr.success('The email has been sended.');
+            if (data == 'error') {
+                toastr.error('An error has occurred.');
+            } else {
+                toastr.success('The email has been sended.');
+            }//end else if
         })
         .catch(function () {
             var callback = friendlyURL('?module=error&op=view&param=503&param2=login_recover_email_error_ajax');
@@ -364,7 +367,7 @@ function social_singin_data(option) {
                     toastr.error('An error has occurred.');
                 });//end firebase
             break;
-        case 'github':
+        case 'github': //Not working
             var authService = firebase.auth();
             var provider = new firebase.auth.GithubAuthProvider();
             provider.addScope('email');
@@ -386,18 +389,30 @@ function login_social_singin(user_data) {
     const username = user_data.user.displayName;
     const email = user_data.user.email
     const profile = user_data.user.photoURL
-    const user_id = user_data.credential.accessToken
+    const user_id = user_data.user.uid
     const user = { 'username': username, 'email': email, 'profile': profile, 'user_id': user_id };
-    console.log(user);
-    //console.log(user_data);
-    // Los accessToken son distintos cada vez. No se si es un error.
 
     ajaxPromise(friendlyURL('?page=login&op=social_singin'), 'POST', 'JSON', user)
         .then(function (data) {
-            console.log(data);
+            if (data == 'error') {
+                toastr.error('An error has occurred. Maybe the email or the username are alredy in use.');
+            } else if (data == 'error_insert') {
+                var callback = friendlyURL('?module=error&op=view&param=503&param2=login_social_error_insert');
+                window.location.href = callback;
+            } else {
+                localStorage.setItem('token', data);
+                if (localStorage.getItem('url_callback')) {
+                    var callback = localStorage.getItem('url_callback')
+                    localStorage.removeItem('url_callback')
+                } else {
+                    var callback = friendlyURL('?page=home&op=view');
+                }//end else if
+                window.location.href = callback;
+            }//end else if
         })
         .catch(function () {
-            console.log('ajax social catch');
+            var callback = friendlyURL('?module=error&op=view&param=503&param2=login_social_error_ajax');
+            window.location.href = callback;
         })//end ajaxpromise
 }//end login_social_singin
 

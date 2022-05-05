@@ -59,7 +59,7 @@ class mail
         $email['from_name'] = 'Sergi\'s Cars';
         $email['to_name'] = $data['to_name'];
         $email['to_email'] = $data['to_email'];
-        $email['subject'] = 'Verify your account';
+        $email['subject'] = 'Change your password ';
         $email['text'] = null;
         $href = SITE_PATH . "login/view/recover/" . $data['token'];
         $email['html'] = '<p>To change your password you need to click this ' . $href . '</p>';

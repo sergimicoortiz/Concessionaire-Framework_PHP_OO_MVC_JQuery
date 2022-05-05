@@ -21,6 +21,12 @@ class login_dao
         return $db->ejecutar($sql);
     } //end insert_user
 
+    public function insert_user_social($db, $id, $username, $email, $avatar)
+    {
+        $sql = "INSERT INTO user VALUES('" . $id . "', TRUE, NULL, '" . $username . "', '" . $email . "', NULL, 'user','" . $avatar . "');";
+        return $db->ejecutar($sql);
+    } //end insert_user_social
+
     public function validate_user($db, $username, $email)
     {
         $sql = "SELECT COUNT(id) cont FROM user WHERE username LIKE '" . $username . "' OR email LIKE '" . $email . "';";
@@ -73,11 +79,11 @@ class login_dao
         return  $db->ejecutar($sql);
     } //end update_user_password
 
-    public function get_user_from_email($db, $email)
+    public function get_user_from_email_no_social($db, $email)
     {
-        $sql = "SELECT username, id FROM user WHERE email ='" . $email . "';";
+        $sql = "SELECT username, id FROM user WHERE email ='" . $email . "' AND password IS NOT NULL AND active = TRUE;";
         $ejecutar = $db->ejecutar($sql);
         return $db->listar($ejecutar);
-    } //end get_user_from_email
+    } //end get_user_from_email_no_social
 
 }//class

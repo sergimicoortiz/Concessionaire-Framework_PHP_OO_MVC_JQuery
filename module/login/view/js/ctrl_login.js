@@ -8,9 +8,10 @@ function load_login() {
         '    <span class="button" id="send_btn">Send</span>' +
         '    <br><span class="login_msg">You don\'t have an account, registere <a href="' + friendlyURL('?page=login&op=view&param=register') + '">HERE</a></span>' +
         '</fieldset>' +
-        '<button id="btn-recover">Recover</button>' +
-        '<button id="social-google">Google</button>' +
-        '<button id="social-github">GitHub</button>' +
+        // '<button id="btn-recover">Recover</button>' +
+        '<span class="login_msg">If you don\'t remember your password, click <a id="btn-recover" href="#">HERE</a></span>' +
+        '<br><button id="social-google">Google</button>' +
+        '<br><button id="social-github">GitHub</button>' +
         '</form>');
     clicks_login();
 }//end load_login
@@ -302,6 +303,10 @@ function send_email_recover() {
                 toastr.error('An error has occurred.');
             } else {
                 toastr.success('The email has been sended.');
+                setTimeout(function () {
+                    var callback = friendlyURL('?module=home&op=view');
+                    window.location.href = callback;
+                }, 3000);//end timeout
             }//end else if
         })
         .catch(function () {
@@ -364,10 +369,10 @@ function social_singin_data(option) {
                     login_social_singin(result);
                 })
                 .catch(function (error) {
-                    toastr.error('An error has occurred.');
+                    toastr.error('An error has occurred. Maybe the email or the username are alredy in use.');
                 });//end firebase
             break;
-        case 'github': //Not working
+        case 'github':
             var authService = firebase.auth();
             var provider = new firebase.auth.GithubAuthProvider();
             provider.addScope('email');
@@ -376,7 +381,8 @@ function social_singin_data(option) {
                     login_social_singin(result);
                 })
                 .catch(function (error) {
-                    toastr.error('An error has occurred.');
+                    toastr.error('An error has occurred. Maybe the email or the username are alredy in use.');
+                    //console.error(error);
                 });//end firebase
             break;
         default:
@@ -390,8 +396,9 @@ function login_social_singin(user_data) {
     const email = user_data.user.email
     const profile = user_data.user.photoURL
     const user_id = user_data.user.uid
-    const user = { 'username': username, 'email': email, 'profile': profile, 'user_id': user_id };
-
+    const provider = user_data.credential.providerId;
+    const user = { 'username': username, 'email': email, 'profile': profile, 'user_id': user_id, "provider": provider };
+    //console.log(user_data);
     ajaxPromise(friendlyURL('?page=login&op=social_singin'), 'POST', 'JSON', user)
         .then(function (data) {
             if (data == 'error') {

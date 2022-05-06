@@ -17,13 +17,13 @@ class login_dao
 
     public function insert_user($db, $id, $token_email, $username, $email, $password, $avatar)
     {
-        $sql = "INSERT INTO user VALUES('" . $id . "', FALSE, '" . $token_email . "', '" . $username . "', '" . $email . "', '" . $password . "', 'user','" . $avatar . "');";
+        $sql = "INSERT INTO user VALUES('" . $id . "', FALSE, '" . $token_email . "', '" . $username . "', '" . $email . "', '" . $password . "', 'user','" . $avatar . "', 'manual');";
         return $db->ejecutar($sql);
     } //end insert_user
 
-    public function insert_user_social($db, $id, $username, $email, $avatar)
+    public function insert_user_social($db, $id, $username, $email, $avatar, $provider)
     {
-        $sql = "INSERT INTO user VALUES('" . $id . "', TRUE, NULL, '" . $username . "', '" . $email . "', NULL, 'user','" . $avatar . "');";
+        $sql = "INSERT INTO user VALUES('" . $id . "', TRUE, NULL, '" . $username . "', '" . $email . "', NULL, 'user','" . $avatar . "', '" . $provider . "');";
         return $db->ejecutar($sql);
     } //end insert_user_social
 
@@ -79,9 +79,9 @@ class login_dao
         return  $db->ejecutar($sql);
     } //end update_user_password
 
-    public function get_user_from_email_no_social($db, $email)
+    public function get_user_from_email($db, $email, $provider = 'manual')
     {
-        $sql = "SELECT username, id FROM user WHERE email ='" . $email . "' AND password IS NOT NULL AND active = TRUE;";
+        $sql = "SELECT username, id FROM user WHERE email ='" . $email . "' AND provider = '" . $provider . "' AND active = TRUE;";
         $ejecutar = $db->ejecutar($sql);
         return $db->listar($ejecutar);
     } //end get_user_from_email_no_social

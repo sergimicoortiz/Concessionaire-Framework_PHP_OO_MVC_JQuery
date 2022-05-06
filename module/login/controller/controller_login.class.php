@@ -69,6 +69,6 @@ class controller_login
 
     function social_singin()
     {
-        echo json_encode(common::load_model('login_model', 'social_singin', [$_POST['username'], $_POST['email'], $_POST['profile'], $_POST['user_id']]));
+        echo json_encode(common::load_model('login_model', 'social_singin', [$_POST['username'], $_POST['email'], $_POST['profile'], $_POST['user_id'], $_POST['provider']]));
     } //end social_singin
 }//class
